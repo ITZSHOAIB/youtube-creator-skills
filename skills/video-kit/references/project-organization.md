@@ -39,3 +39,10 @@ Once Video Kit has settled on the primary video title, rename the working-title 
 - Put generated or collected media in `assets/` and create it only when needed. Keep HyperFrames planning and editable source under `production/` (for example, `production/video-plan.md` and `production/hyperframes/`). Do not create empty placeholder directories.
 - Avoid duplicating the same script, review brief, or upload package under a separate global `scripts/` tree. A video folder is the source of truth for that video's materials.
 - For a brainstorming-only response, do not create a project folder. Create one once the creator requests saved research, a review brief, a script/outline, a publishing package, or production files.
+
+## Shorts projects
+
+- When a Short is derived from a long-form video, keep it within that video's existing project folder at `shorts/<short-title>/`. Link back to the source script or footage in `shorts-brief.md`.
+- For a standalone Short with no matching parent project, use `videos/<year>/<short-title>/` and keep its `shorts-brief.md`, optional production files, and generated assets together there.
+- Reuse a matching existing Short folder. Do not duplicate the parent video, its review brief, or its publishing package inside the Short folder; link to them instead.
+- Keep Short-specific spoken copy, scene beats, and requested upload copy in `shorts-brief.md` by default. Split out files only when the creator requests it or the material is substantial enough to work better separately.

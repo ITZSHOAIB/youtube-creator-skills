@@ -12,6 +12,7 @@ This repository contains focused Agent Skills you can install individually or to
 | [`topic-scout`](skills/topic-scout/SKILL.md) | Deep, current research and evidence-backed ranking of video topic opportunities for a specific channel. |
 | [`review-grill`](skills/review-grill/SKILL.md) | Product and digital-service research followed by an adaptive, one-question-at-a-time interview that saves the creator's firsthand experience in a structured review brief. |
 | [`video-kit`](skills/video-kit/SKILL.md) | Per-video research, recording outlines or scripts, publishing assets, and optional open-source HyperFrames production. |
+| [`youtube-shorts`](skills/youtube-shorts/SKILL.md) | Short-specific concepts, scripts, upload assets, production briefs, overlays, and requested local renders. |
 
 ### YouTube Manager
 
@@ -43,6 +44,12 @@ Video Kit handles work for one video: current research, a channel-aware recordin
 
 All files for a video stay together under the channel workspace's `videos/` folder. New projects use `videos/<year>/<video-title>/`; Review Grill's `review-brief.md`, Video Kit's `script.md` and `publishing.md`, and any assets share that same project folder. Existing projects are reused in place. See [project organization](skills/video-kit/references/project-organization.md).
 
+### YouTube Shorts
+
+Use YouTube Shorts for standalone Shorts and cutdowns from long-form videos. It adapts concepts and scripts to the requested goal and format, then continues into production only when requested. It follows channel memory, uses Review Grill briefs for firsthand review claims, and can draw on Topic Scout or Video Kit for the research each Short needs. It does not duplicate their saved research or long-form deliverables.
+
+A Short derived from a long-form video stays in that video's folder under `shorts/<short-title>/`; a standalone Short uses `videos/<year>/<short-title>/`. The Short brief keeps its concept, scene beats, and requested upload copy together. Production assets stay with the Short.
+
 ## Memory-first, evidence-led
 
 When `CHANNEL_MEMORY.md` is available, it guides the workflow: research priorities, intended audience, question phrasing, tone, language, script style, disclosures, and production constraints. Relevant transcript and style references inform voice without being copied mechanically.
@@ -58,7 +65,7 @@ For review work, the creator is the source for firsthand observations. Manufactu
 Install the skills globally for Codex:
 
 ```bash
-npx skills add ITZSHOAIB/youtube-creator-skills --skill youtube-manager --skill topic-scout --skill review-grill --skill video-kit --agent codex --global
+npx skills add ITZSHOAIB/youtube-creator-skills --skill youtube-manager --skill topic-scout --skill review-grill --skill video-kit --skill youtube-shorts --agent codex --global
 ```
 
 Install just one skill:
@@ -68,6 +75,7 @@ npx skills add ITZSHOAIB/youtube-creator-skills --skill youtube-manager --agent 
 npx skills add ITZSHOAIB/youtube-creator-skills --skill topic-scout --agent codex --global
 npx skills add ITZSHOAIB/youtube-creator-skills --skill review-grill --agent codex --global
 npx skills add ITZSHOAIB/youtube-creator-skills --skill video-kit --agent codex --global
+npx skills add ITZSHOAIB/youtube-creator-skills --skill youtube-shorts --agent codex --global
 ```
 
 To install for another agent, replace `codex` with its supported agent name. To install into the current project instead of globally, omit `--global`. See the [Skills CLI documentation](https://github.com/vercel-labs/skills) for supported agents and options.
@@ -81,6 +89,7 @@ After installing, start a conversation with a task such as:
 - “Interview me about my experience with this controller and save a review brief. Then help me turn it into a YouTube review video.”
 - “Research this topic, make a Hinglish recording outline, and prepare the title, description, tags, thumbnail copy, and music options.”
 - “Use my channel memory to pitch three video ideas for this month's uploads.”
+- “Turn the strongest moment from this review into a self-contained YouTube Short and save the brief in the existing video project.”
 
 For a hands-on review, Review Grill researches the product and saves an experience brief after interviewing the creator. Video Kit uses that brief for scripts and publishing assets. YouTube Manager maintains channel memory and strategy. For channel setup, the agent researches the channel and asks for approval before creating durable memory or transcript-reference files.
 
@@ -100,14 +109,22 @@ skills/
 │   ├── SKILL.md
 │   └── references/
 │       └── experience-probes.md
-└── video-kit/
+├── video-kit/
+│   ├── SKILL.md
+│   └── references/
+│       ├── hyperframes-build.md
+│       ├── music-and-licensing.md
+│       ├── project-organization.md
+│       ├── scripting-and-publishing.md
+│       └── video-production-briefs.md
+└── youtube-shorts/
     ├── SKILL.md
     └── references/
-        ├── hyperframes-build.md
-        ├── music-and-licensing.md
-        ├── project-organization.md
-        ├── scripting-and-publishing.md
-        └── video-production-briefs.md
+        ├── shorts-brief-template.md
+        ├── shorts-intake.md
+        ├── shorts-production.md
+        ├── shorts-text-overlays.md
+        └── shorts-writing-and-publishing.md
 ```
 
 Each skill has its own `SKILL.md` and can be installed independently. The channel manager includes supporting references and a local ASR helper for transcript fallback.
