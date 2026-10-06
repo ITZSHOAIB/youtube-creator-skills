@@ -39,6 +39,9 @@
 
   body {
     margin: 0;
+    /* Tile lift/shadow combinations can spill a few px past the viewport
+       edge mid-transition; clip instead of growing a scrollbar. */
+    overflow-x: clip;
     background: var(--color-ink);
     color: var(--color-fg);
     font-family: var(--font-sans);
@@ -69,7 +72,7 @@
   a:hover { color: var(--color-ink); background: var(--color-primary); }
   a:focus-visible, button:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 4px; }
   p a, li a, ol a, ul a { text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 1.5px; }
-  a, button { transition: color 0.15s ease, background-color 0.15s ease, border-color 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease; }
+  a, button { transition: color 0.15s ease, background-color 0.15s ease, border-color 0.15s ease, transform 0.15s ease, translate 0.15s ease, box-shadow 0.15s ease; }
   code, pre { font-family: var(--font-mono); }
   /* Never visually uppercase source/code, even under the uppercase layout root. */
   pre, code { text-transform: none; }
@@ -119,4 +122,44 @@
 .tile-hover:hover * {
   color: var(--color-ink) !important;
   border-color: var(--color-ink) !important;
+}
+
+/* Motion: press physics + terminal life.
+   Deliberately unlayered (same escape hatch as .tile-hover): while a press is
+   held, `translate` and `box-shadow` must outrank the translate utilities and
+   shadow-hard-* tokens, and unlayered CSS beats layered CSS. Every animation
+   below is gated behind prefers-reduced-motion — color states (the actual
+   information channel) are never animated away. */
+@keyframes nav-pop {
+  from { transform: scale(0.94); }
+  to { transform: scale(1); }
+}
+@keyframes copy-pop {
+  0% { transform: scale(1); }
+  40% { transform: scale(1.12); }
+  100% { transform: scale(1); }
+}
+@keyframes cmd-blink {
+  0%, 49.99% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  /* Keystroke: every link and button depresses 2px, hard shadows collapse. */
+  a:active, button:active {
+    translate: 0 2px;
+    box-shadow: none;
+  }
+  /* The selected nav item pops in when aria-current appears on route change. */
+  a[aria-current='page'] {
+    animation: nav-pop 0.15s cubic-bezier(0.34, 1.45, 0.64, 1);
+  }
+  /* Copy confirmation pop on the CommandBlock button. */
+  .copy-pop {
+    animation: copy-pop 0.3s ease-out;
+  }
+  /* Block cursor at the end of every command line. */
+  .cmd-blink {
+    animation: cmd-blink 1.1s linear infinite;
+  }
 }

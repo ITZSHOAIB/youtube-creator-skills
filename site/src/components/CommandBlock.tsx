@@ -55,7 +55,7 @@ export function CommandBlock({ command, label = 'COMMAND', prompt = true }: Comm
           aria-label={copied ? 'Command copied' : 'Copy command to clipboard'}
           className={`shrink-0 border-2 border-line px-2.5 py-1 font-mono text-xs uppercase tracking-[0.15em] transition-colors ${
             copied
-              ? 'bg-primary text-ink'
+              ? 'bg-primary text-ink copy-pop'
               : 'bg-panel text-fg hover:bg-primary hover:text-ink'
           }`}
         >
@@ -65,6 +65,7 @@ export function CommandBlock({ command, label = 'COMMAND', prompt = true }: Comm
       <pre className="m-0 border-0 bg-transparent p-4 font-mono text-xs text-fg shadow-none overflow-x-auto whitespace-pre">
         {prompt && <span aria-hidden="true" className="select-none text-primary">$ </span>}
         {command.trim()}
+        <span aria-hidden="true" className="cmd-blink inline-block h-[1em] w-[0.5em] bg-primary align-middle" />
       </pre>
       <span role="status" aria-live="polite" className="sr-only">
         {copied ? 'Command copied to clipboard' : ''}
