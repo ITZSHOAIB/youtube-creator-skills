@@ -1,5 +1,9 @@
 import { Link } from 'react-router'
 import { skills } from '../data/skills'
+import { CommandBlock } from '../components/CommandBlock'
+import packageJson from '../../package.json'
+
+const QUICK_INSTALL_COMMAND = 'npx skills add ITZSHOAIB/youtube-creator-skills'
 
 export function Home() {
   return (
@@ -7,7 +11,7 @@ export function Home() {
       <header className="border-b border-[#C3C7D6] px-6 py-3 font-mono text-xs uppercase tracking-[0.12em] flex items-center justify-between">
         <span className="text-[#FBFBFF]">//</span>
         <span>SYSTEM / YOUTUBE-CREATOR-SKILLS</span>
-        <span>REV_2.6</span>
+        <span>v{packageJson.version}</span>
       </header>
       <div className="top-strip" />
 
@@ -20,7 +24,7 @@ export function Home() {
           <p className="font-mono text-sm normal-case tracking-normal text-[#FBFBFF]/70 leading-relaxed">
             A brutal, evidence-led operating layer for creators. Plan, script, and ship with repeatable technical discipline.
           </p>
-          <div className="flex flex-col gap-2 font-mono text-xs uppercase tracking-[0.15em] text-[#FBFBFF]/50">
+          <div className="flex flex-col gap-2 font-mono text-xs uppercase tracking-[0.15em] text-[#FBFBFF]/60">
             <span>[ INSTALL PIPELINE ]</span>
             <span>[ CHANNEL MEMORY ]</span>
             <span>[ SCRIPT + PACKAGING ]</span>
@@ -32,9 +36,7 @@ export function Home() {
       <section className="border-b border-[#C3C7D6] grid grid-cols-1 md:grid-cols-2 gap-px bg-[#070914]">
         <div className="bg-[#070914] p-6">
           <h2 className="font-display text-3xl uppercase tracking-[-0.02em] leading-[0.9] mb-4">INSTALL</h2>
-          <pre className="font-mono text-xs bg-[#15152B] border border-[#C3C7D6] p-4 overflow-x-auto mb-4 text-[#FBFBFF]">
-            <code>npx skills add ITZSHOAIB/youtube-creator-skills --agent codex --global</code>
-          </pre>
+          <CommandBlock label="QUICK INSTALL" command={QUICK_INSTALL_COMMAND} />
           <p className="font-mono text-xs uppercase tracking-[0.1em] text-[#FBFBFF]/60 mb-4">
             Update with <code className="text-[#FBFBFF]">npx skills update</code>
           </p>
@@ -53,7 +55,7 @@ export function Home() {
       </section>
 
       <section className="border-b border-[#C3C7D6]">
-        <h2 className="px-6 py-4 font-mono text-xs uppercase tracking-[0.2em] text-[#FBFBFF]/50 border-b border-[#C3C7D6]">
+        <h2 className="px-6 py-4 font-mono text-xs uppercase tracking-[0.2em] text-[#FBFBFF]/60 border-b border-[#C3C7D6]">
           === UNIT GRID ===
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-[#070914]">

@@ -66,23 +66,11 @@ For review work, the creator is the source for firsthand observations. Manufactu
 
 ## Install
 
-Install the skills globally for Codex:
-
 ```bash
-npx skills add ITZSHOAIB/youtube-creator-skills --skill youtube-manager --skill topic-scout --skill review-grill --skill video-kit --skill youtube-shorts --agent codex --global
+npx skills add ITZSHOAIB/youtube-creator-skills
 ```
 
-Install just one skill:
-
-```bash
-npx skills add ITZSHOAIB/youtube-creator-skills --skill youtube-manager --agent codex --global
-npx skills add ITZSHOAIB/youtube-creator-skills --skill topic-scout --agent codex --global
-npx skills add ITZSHOAIB/youtube-creator-skills --skill review-grill --agent codex --global
-npx skills add ITZSHOAIB/youtube-creator-skills --skill video-kit --agent codex --global
-npx skills add ITZSHOAIB/youtube-creator-skills --skill youtube-shorts --agent codex --global
-```
-
-To install for another agent, replace `codex` with its supported agent name. To install into the current project instead of globally, omit `--global`. See the [Skills CLI documentation](https://github.com/vercel-labs/skills) for supported agents and options.
+No flags needed — the CLI takes care of the options while it runs: which skills to install, which agent to use, and whether to install globally or into the current project. See the [Skills CLI documentation](https://github.com/vercel-labs/skills) for supported agents and options.
 
 ## Try it
 

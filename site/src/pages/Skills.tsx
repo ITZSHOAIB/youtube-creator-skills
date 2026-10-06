@@ -20,7 +20,7 @@ export function Skills() {
 
       {groups.map(group => (
         <section key={group.title} className="border-b border-[#C3C7D6]">
-          <h2 className="px-6 py-4 font-mono text-xs uppercase tracking-[0.2em] text-[#FBFBFF]/50 border-b border-[#C3C7D6]">
+          <h2 className="px-6 py-4 font-mono text-xs uppercase tracking-[0.2em] text-[#FBFBFF]/60 border-b border-[#C3C7D6]">
             === {group.title} ===
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-[#070914]">

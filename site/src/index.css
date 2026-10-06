@@ -21,6 +21,12 @@ body {
   line-height: 1.5;
 }
 
+/* Soften large headings slightly to reduce halation on the dark background.
+   19.2:1 -> ~17.6:1, still comfortably AAA. */
+h1, h2, h3, h4, h5, h6 {
+  color: #E7E8EC;
+}
+
 body::before {
   content: '';
   position: fixed;
@@ -37,6 +43,16 @@ a:focus-visible, button:focus-visible { outline: 2px solid #53D8FF; outline-offs
 p a, li a, ol a, ul a { text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 1.5px; }
 a, button { transition: color 0.15s ease, background-color 0.15s ease, border-color 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease; }
 code, pre { font-family: var(--font-mono); }
+/* Never visually uppercase source/code, even under the uppercase layout root. */
+pre, code { text-transform: none; }
+/* Inline code inside a rendered markdown code block should not keep inline styling. */
+.md-content pre code {
+  background: none;
+  border: 0;
+  padding: 0;
+  font-size: inherit;
+  color: #FBFBFF;
+}
 code { background: #15152B; color: #53D8FF; padding: 2px 6px; border: 2px solid #C3C7D6; border-radius: 0; }
 pre { background: #15152B; color: #FBFBFF; border: 3px solid #C3C7D6; border-radius: 0; box-shadow: 8px 8px 0 #53D8FF; overflow-x: auto; }
 

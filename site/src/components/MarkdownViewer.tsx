@@ -2,27 +2,43 @@ import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 
 function stripFrontmatter(markdown: string): string {
-  return markdown.replace(/^---\n[\s\S]*?\n---\n/, '')
+  return markdown.replace(/^---\r?\n[\s\S]*?\r?\n---\r?\n/, '')
 }
 
 export function MarkdownViewer({ source }: { source: string }) {
   const cleaned = stripFrontmatter(source)
   return (
-    <div className="rounded-2xl bg-[#0f1115] border border-[#2a3140] p-6 md:p-8 space-y-6 text-[15px] leading-relaxed">
+    <div className="md-content p-6 md:p-8 text-sm normal-case text-[#C3C7D6] leading-relaxed">
       <ReactMarkdown
         remarkPlugins={[remarkGfm]}
         components={{
-          h1: ({ node, ...props }) => <h1 className="font-serif text-3xl font-semibold mb-4 mt-8" {...props} />,
-          h2: ({ node, ...props }) => <h2 className="font-serif text-2xl font-semibold mb-3 mt-6" {...props} />,
-          h3: ({ node, ...props }) => <h3 className="font-serif text-xl font-semibold mb-2 mt-4" {...props} />,
-          p: ({ node, ...props }) => <p className="text-[#9aa0ab] leading-relaxed mb-4" {...props} />,
-          ul: ({ node, ...props }) => <ul className="list-disc list-inside space-y-1 mb-4" {...props} />,
-          ol: ({ node, ...props }) => <ol className="list-decimal list-inside space-y-1 mb-4" {...props} />,
-          li: ({ node, ...props }) => <li className="text-[#9aa0ab]" {...props} />,
-          a: ({ node, ...props }) => <a className="text-[#7bb3ff] hover:underline" {...props} />,
-          code: ({ node, ...props }) => <code className="font-mono bg-[#1c2230] px-1.5 py-0.5 rounded text-[#7bb3ff] text-sm" {...props} />,
-          pre: ({ node, ...props }) => <pre className="rounded-2xl bg-[#0f1115] border border-[#2a3140] p-5 font-mono text-sm overflow-x-auto mb-4" {...props} />,
-          blockquote: ({ node, ...props }) => <blockquote className="border-l-2 border-[#7bb3ff]/30 pl-4 text-[#9aa0ab] italic mb-4" {...props} />,
+          // Headings are demoted: the page already has h1 (skill name) and
+          // h2 (SOURCE INSTRUCTIONS), so markdown starts at h3.
+          h1: ({ node, ...props }) => <h3 className="font-display text-xl uppercase tracking-[-0.01em] text-[#FBFBFF] mt-8 mb-3 first:mt-0" {...props} />,
+          h2: ({ node, ...props }) => <h4 className="font-display text-base uppercase tracking-[0.05em] text-[#FBFBFF] mt-6 mb-3 first:mt-0" {...props} />,
+          h3: ({ node, ...props }) => <h5 className="font-mono text-sm uppercase tracking-[0.15em] text-[#FF8A24] mt-5 mb-2 first:mt-0" {...props} />,
+          h4: ({ node, ...props }) => <h5 className="font-mono text-sm uppercase tracking-[0.15em] text-[#FF8A24] mt-5 mb-2 first:mt-0" {...props} />,
+          h5: ({ node, ...props }) => <h5 className="font-mono text-sm uppercase tracking-[0.15em] text-[#FF8A24] mt-5 mb-2 first:mt-0" {...props} />,
+          h6: ({ node, ...props }) => <h5 className="font-mono text-sm uppercase tracking-[0.15em] text-[#FF8A24] mt-5 mb-2 first:mt-0" {...props} />,
+          p: ({ node, ...props }) => <p className="mb-4 text-[#C3C7D6]" {...props} />,
+          a: ({ node, ...props }) => <a className="text-[#53D8FF] underline underline-offset-4 decoration-2 hover:text-[#070914]" {...props} />,
+          ul: ({ node, ...props }) => <ul className="list-disc list-outside pl-5 mb-4 space-y-1" {...props} />,
+          ol: ({ node, ...props }) => <ol className="list-decimal list-outside pl-5 mb-4 space-y-1" {...props} />,
+          li: ({ node, ...props }) => <li className="text-[#C3C7D6]" {...props} />,
+          strong: ({ node, ...props }) => <strong className="font-semibold text-[#FBFBFF]" {...props} />,
+          em: ({ node, ...props }) => <em className="italic text-[#FBFBFF]" {...props} />,
+          blockquote: ({ node, ...props }) => <blockquote className="border-l-4 border-[#FF8A24] pl-4 italic my-4 text-[#FBFBFF]/80" {...props} />,
+          hr: ({ node, ...props }) => <hr className="border-0 border-t-2 border-[#C3C7D6] my-6" {...props} />,
+          code: ({ node, ...props }) => <code className="bg-[#070914] border border-[#C3C7D6] px-1.5 py-0.5 text-xs text-[#FF8A24]" {...props} />,
+          pre: ({ node, ...props }) => <pre className="bg-[#070914] border-2 border-[#C3C7D6] p-4 mb-4 overflow-x-auto whitespace-pre text-xs text-[#FBFBFF]" {...props} />,
+          table: ({ node, ...props }) => (
+            <div className="w-full overflow-x-auto mb-4 border-2 border-[#C3C7D6]">
+              <table className="w-full border-collapse text-left" {...props} />
+            </div>
+          ),
+          thead: ({ node, ...props }) => <thead className="bg-[#070914]" {...props} />,
+          th: ({ node, ...props }) => <th className="font-mono text-xs uppercase tracking-[0.1em] text-[#FBFBFF] border border-[#C3C7D6] px-3 py-2" {...props} />,
+          td: ({ node, ...props }) => <td className="border border-[#C3C7D6] px-3 py-2 align-top text-[#C3C7D6]" {...props} />,
         }}
       >
         {cleaned}

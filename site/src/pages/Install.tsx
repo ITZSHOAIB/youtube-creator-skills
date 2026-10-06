@@ -1,3 +1,7 @@
+import { CommandBlock } from '../components/CommandBlock'
+
+const INSTALL_COMMAND = 'npx skills add ITZSHOAIB/youtube-creator-skills'
+
 export function Install() {
   return (
     <div className="bg-[#070914] text-[#FBFBFF] font-mono">
@@ -16,48 +20,18 @@ export function Install() {
       </section>
 
       <section className="border-b border-[#C3C7D6] px-6 py-10">
-        <h2 className="font-display text-2xl uppercase tracking-[-0.02em] leading-[0.9] mb-6">ALL SKILLS AT ONCE</h2>
-        <pre className="font-mono text-xs bg-[#15152B] border border-[#C3C7D6] p-4 overflow-x-auto mb-4 text-[#FBFBFF]">
-          <code>
-            npx skills add ITZSHOAIB/youtube-creator-skills \
-              --skill youtube-manager \
-              --skill topic-scout \
-              --skill review-grill \
-              --skill video-kit \
-              --skill youtube-shorts \
-              --skill youtube-thumbnail \
-              --skill creator-voice \
-              --skill social-repurpose \
-              --skill youtube-analytics \
-              --agent codex \
-              --global
-          </code>
-        </pre>
-      </section>
-
-      <section className="border-b border-[#C3C7D6] px-6 py-10">
-        <h2 className="font-display text-2xl uppercase tracking-[-0.02em] leading-[0.9] mb-6">JUST ONE SKILL</h2>
-        <pre className="font-mono text-xs bg-[#15152B] border border-[#C3C7D6] p-4 overflow-x-auto mb-4 text-[#FBFBFF]">
-          <code>npx skills add ITZSHOAIB/youtube-creator-skills --skill youtube-manager --agent codex --global</code>
-        </pre>
-      </section>
-
-      <section className="border-b border-[#C3C7D6] px-6 py-10">
-        <h2 className="font-display text-2xl uppercase tracking-[-0.02em] leading-[0.9] mb-6">LOCAL PROJECT</h2>
+        <h2 className="font-display text-2xl uppercase tracking-[-0.02em] leading-[0.9] mb-6">RUN THE INSTALLER</h2>
         <p className="font-mono text-sm normal-case text-[#FBFBFF]/70 mb-4">
-          Omit <code className="text-[#FBFBFF]">--global</code> to install into the current project:
+          One command, no flags needed. The CLI will ask which skills you want, which agent you use, and where to install them — then it writes editable files into your project.
         </p>
-        <pre className="font-mono text-xs bg-[#15152B] border border-[#C3C7D6] p-4 overflow-x-auto mb-4 text-[#FBFBFF]">
-          <code>npx skills add ITZSHOAIB/youtube-creator-skills --skill topic-scout --agent codex</code>
-        </pre>
-      </section>
-
-      <section className="border-b border-[#C3C7D6] px-6 py-10">
-        <h2 className="font-display text-2xl uppercase tracking-[-0.02em] leading-[0.9] mb-6">USE ANOTHER AGENT</h2>
-        <p className="font-mono text-sm normal-case text-[#FBFBFF]/70 mb-4">
-          Replace <code className="text-[#FBFBFF]">codex</code> with the supported agent name.
+        <CommandBlock label="INSTALL" command={INSTALL_COMMAND} />
+        <p className="font-mono text-sm normal-case text-[#FBFBFF]/70">
+          See the{' '}
+          <a href="https://github.com/vercel-labs/skills" target="_blank" rel="noopener" className="text-[#53D8FF]">
+            Skills CLI docs
+          </a>{' '}
+          for everything the CLI supports.
         </p>
-        <a href="https://github.com/vercel-labs/skills" target="_blank" rel="noopener" className="font-mono text-sm normal-case text-[#FBFBFF]">[ Skills CLI docs ]</a>
       </section>
 
       <section className="px-6 py-10">

@@ -1,11 +1,13 @@
 import { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router'
 import { skills } from '../data/skills'
+import { MarkdownViewer } from '../components/MarkdownViewer'
 
 export function SkillDetail() {
   const { id } = useParams<{ id: string }>()
   const skill = skills.find(s => s.id === id)
   const [source, setSource] = useState<string>('')
+  const [tab, setTab] = useState<'rendered' | 'raw'>('rendered')
 
   useEffect(() => {
     if (!skill) return
@@ -84,12 +86,38 @@ export function SkillDetail() {
       </section>
 
       <section className="px-6 py-10 overflow-hidden">
-        <h2 className="font-display text-2xl uppercase tracking-[-0.02em] leading-[0.9] mb-6">SOURCE INSTRUCTIONS</h2>
+        <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
+          <h2 className="font-display text-2xl uppercase tracking-[-0.02em] leading-[0.9]">SOURCE INSTRUCTIONS</h2>
+          <div className="flex gap-2">
+            <button
+              type="button"
+              onClick={() => setTab('rendered')}
+              aria-pressed={tab === 'rendered'}
+              className={`font-mono text-xs uppercase tracking-[0.15em] px-3 py-1.5 border-2 border-[#C3C7D6] ${tab === 'rendered' ? 'bg-[#FF8A24] text-[#070914] shadow-[4px_4px_0_#53D8FF]' : 'bg-[#070914] text-[#FBFBFF] hover:bg-[#53D8FF] hover:text-[#070914]'}`}
+            >
+              RENDERED
+            </button>
+            <button
+              type="button"
+              onClick={() => setTab('raw')}
+              aria-pressed={tab === 'raw'}
+              className={`font-mono text-xs uppercase tracking-[0.15em] px-3 py-1.5 border-2 border-[#C3C7D6] ${tab === 'raw' ? 'bg-[#FF8A24] text-[#070914] shadow-[4px_4px_0_#53D8FF]' : 'bg-[#070914] text-[#FBFBFF] hover:bg-[#53D8FF] hover:text-[#070914]'}`}
+            >
+              RAW
+            </button>
+          </div>
+        </div>
         <p className="font-mono text-sm normal-case text-[#FBFBFF]/70 mb-4">
-          Current SKILL.md included for inspection. Not rendered as HTML.
+          Current SKILL.md included for inspection. Switch to RAW to see the exact source file.
         </p>
         <div className="w-full max-w-full border border-[#C3C7D6] bg-[#15152B] shadow-[8px_8px_0_#53D8FF]">
-          <pre className="w-full max-w-full max-h-[75vh] m-0 border-0 shadow-none font-mono text-xs p-6 md:p-8 overflow-auto whitespace-pre text-[#FBFBFF]">{source}</pre>
+          {source ? (
+            tab === 'rendered'
+              ? <MarkdownViewer source={source} />
+              : <pre className="w-full max-w-full max-h-[75vh] m-0 border-0 shadow-none font-mono text-xs p-6 md:p-8 overflow-auto whitespace-pre text-[#FBFBFF]">{source}</pre>
+          ) : (
+            <p className="p-6 md:p-8 font-mono text-sm normal-case text-[#FBFBFF]/60">// Loading source…</p>
+          )}
         </div>
       </section>
     </div>
