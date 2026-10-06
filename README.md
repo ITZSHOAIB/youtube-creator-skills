@@ -101,13 +101,25 @@ For a hands-on review, Review Grill researches the product and saves an experien
 
 The documentation site lives in [`site/`](site/). It is a Vite + React + TypeScript app styled with Tailwind CSS, and it has no server code, deployment manifest, credentials, or generated deployment artifacts checked in (`site/dist` and `site/node_modules` are ignored).
 
-For Cloudflare Pages:
+For Cloudflare Pages (git integration):
 
 1. Connect this GitHub repository.
 2. Set the production branch to `main`.
-3. Set the root directory to `site`.
+3. In **Build & deployments → Build configurations**, set the root directory to `site`.
 4. Set the framework preset to **Vite** (build command `npm run build`).
 5. Set the build output directory to `dist`.
+6. Optional but recommended: add an environment variable `NODE_VERSION` = `20` (a `.nvmrc` with `20` is also included as a fallback).
+
+Every push to `main` then rebuilds and deploys automatically. The site is a single-page app with client-side routing: [`site/public/_redirects`](site/public/_redirects) rewrites all paths to `index.html` so deep links like `/skill/video-kit` work on refresh, and unknown paths fall back to home.
+
+To deploy manually instead, run:
+
+```bash
+cd site
+npm install
+npm run build
+npx wrangler pages deploy dist
+```
 
 For local development:
 

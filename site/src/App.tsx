@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from 'react-router'
+import { BrowserRouter, Navigate, Routes, Route } from 'react-router'
 import { Layout } from './components/Layout'
 import { Home } from './pages/Home'
 import { Skills } from './pages/Skills'
@@ -16,6 +16,7 @@ export default function App() {
           <Route path="/skill/:id" element={<SkillDetail />} />
           <Route path="/install" element={<Install />} />
           <Route path="/about" element={<About />} />
+          <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </Layout>
     </BrowserRouter>
