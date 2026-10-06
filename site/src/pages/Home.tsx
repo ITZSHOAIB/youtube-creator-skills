@@ -46,10 +46,13 @@ export function Home() {
           )
         }
 
+        // GSAP parses the stylesheet's translateY(110%) into a pixel `y`
+        // baseline, and `y` / `yPercent` are independent channels — zero `y`
+        // explicitly or the tween ends at y=47.5px and the words stay masked.
         timeline.fromTo(
           '.motion-mask > span',
-          { yPercent: 110 },
-          { yPercent: 0, duration: 0.6, ease: 'power4.out', stagger: 0.07 },
+          { y: 0, yPercent: 110 },
+          { y: 0, yPercent: 0, duration: 0.6, ease: 'power4.out', stagger: 0.07 },
           0.25,
         )
       })
