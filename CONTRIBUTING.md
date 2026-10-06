@@ -44,6 +44,11 @@ npm run build      # typecheck (tsc -b) + production build
 npm run lint       # oxlint
 ```
 
+To reach the dev server through a remote HTTPS endpoint (e.g. Tailscale
+Serve), which forwards the original `Host` header, allow your hostname in
+`site/.env.local` (gitignored): `DEV_ALLOWED_HOSTS=your-hostname`. When
+unset, Vite's default host allowlist applies.
+
 CI runs the skill-source check, `npm run build`, and lint on every pull
 request to `main`.
 
