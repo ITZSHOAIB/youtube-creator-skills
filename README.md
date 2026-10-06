@@ -13,6 +13,10 @@ This repository contains focused Agent Skills you can install individually or to
 | [`review-grill`](skills/review-grill/SKILL.md) | Product and digital-service research followed by an adaptive, one-question-at-a-time interview that saves the creator's firsthand experience in a structured review brief. |
 | [`video-kit`](skills/video-kit/SKILL.md) | Per-video research, recording outlines or scripts, publishing assets, and optional open-source HyperFrames production. |
 | [`youtube-shorts`](skills/youtube-shorts/SKILL.md) | Short-specific concepts, scripts, upload assets, production briefs, overlays, and requested local renders. |
+| [`youtube-thumbnail`](skills/youtube-thumbnail/SKILL.md) | Honest thumbnail strategy, mockups, and final exports. |
+| [`creator-voice`](skills/creator-voice/SKILL.md) | An approved creator voice profile from real scripts and transcripts. |
+| [`social-repurpose`](skills/social-repurpose/SKILL.md) | A selected cross-platform repurposing plan from an approved source video. |
+| [`youtube-analytics`](skills/youtube-analytics/SKILL.md) | Evidence-based decisions from supplied YouTube Studio data. |
 
 ### YouTube Manager
 
@@ -93,6 +97,19 @@ After installing, start a conversation with a task such as:
 
 For a hands-on review, Review Grill researches the product and saves an experience brief after interviewing the creator. Video Kit uses that brief for scripts and publishing assets. YouTube Manager maintains channel memory and strategy. For channel setup, the agent researches the channel and asks for approval before creating durable memory or transcript-reference files.
 
+## Website deployment
+
+The documentation site is a plain static web app in [`website/`](website/). It has no build step, server code, deployment manifest, credentials, or generated deployment artifacts.
+
+For Cloudflare Pages:
+
+1. Connect this GitHub repository.
+2. Set the production branch to `main`.
+3. Set the build command to **none**.
+4. Set the build output directory to `website`.
+
+Cloudflare Pages can then serve the HTML, CSS, JavaScript, and Markdown source files directly.
+
 ## Repository layout
 
 ```text
@@ -125,6 +142,13 @@ skills/
         ├── shorts-production.md
         ├── shorts-text-overlays.md
         └── shorts-writing-and-publishing.md
+website/
+├── index.html
+├── skill.html
+├── styles.css
+├── dark.css
+├── docs.js
+└── skill-source/
 ```
 
 Each skill has its own `SKILL.md` and can be installed independently. The channel manager includes supporting references and a local ASR helper for transcript fallback.
