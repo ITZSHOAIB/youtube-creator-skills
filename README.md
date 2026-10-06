@@ -1,5 +1,9 @@
 # YouTube Creator Skills
 
+[![CI](https://github.com/ITZSHOAIB/youtube-creator-skills/actions/workflows/ci.yml/badge.svg)](https://github.com/ITZSHOAIB/youtube-creator-skills/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/license-MIT-FF8A24.svg)](LICENSE)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-53D8FF.svg)](CONTRIBUTING.md)
+
 **Practical, channel-aware workflows for the work behind a YouTube video.** Research the channel and product, learn the creator's real experience, then shape ideas, scripts, packaging, and production around the channel's approved memory.
 
 This repository contains focused Agent Skills you can install individually or together. The skills are designed to work with Codex and other agents supported by the [Vercel Skills CLI](https://github.com/vercel-labs/skills).
@@ -84,6 +88,16 @@ After installing, start a conversation with a task such as:
 - “Turn the strongest moment from this review into a self-contained YouTube Short and save the brief in the existing video project.”
 
 For a hands-on review, Review Grill researches the product and saves an experience brief after interviewing the creator. Video Kit uses that brief for scripts and publishing assets. YouTube Manager maintains channel memory and strategy. For channel setup, the agent researches the channel and asks for approval before creating durable memory or transcript-reference files.
+
+## Contributing
+
+Contributions are welcome — skill guidance fixes, new skills, and site
+improvements all count. Start with [CONTRIBUTING.md](CONTRIBUTING.md) for
+local setup, skill conventions, and the pull request checklist. All
+participation is covered by our [Code of Conduct](CODE_OF_CONDUCT.md).
+
+- Bugs and suggestions use the [issue forms](https://github.com/ITZSHOAIB/youtube-creator-skills/issues/new/choose)
+- Security issues go through [SECURITY.md](SECURITY.md) instead of public issues
 
 ## Website deployment
 
@@ -173,3 +187,10 @@ site/
 ```
 
 Each skill has its own `SKILL.md` and can be installed independently. The channel manager includes supporting references and a local ASR helper for transcript fallback.
+
+The docs site serves a byte-identical copy of each `SKILL.md` from `site/public/skill-source/` for its RENDERED/RAW toggle. After editing any skill, run `npm run skills:sync` in `site/` — CI rejects pull requests where those copies are stale.
+
+## License
+
+Licensed under the [MIT License](LICENSE). By contributing, you agree that
+your contributions are licensed under the same terms.

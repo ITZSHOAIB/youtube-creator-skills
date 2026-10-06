@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Skills CLI questions
+    url: https://github.com/vercel-labs/skills
+    about: Problems with `npx skills add` itself (supported agents, flags, global vs. project install) belong upstream.
+  - name: Security vulnerability
+    url: https://github.com/ITZSHOAIB/youtube-creator-skills/security/policy
+    about: Report security issues privately — see SECURITY.md instead of opening a public issue.

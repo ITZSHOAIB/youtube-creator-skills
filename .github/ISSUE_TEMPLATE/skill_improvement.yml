@@ -1,0 +1,60 @@
+name: Skill improvement
+description: Suggest better guidance, missing coverage, corrections, or a new skill.
+title: "[Skill]: "
+labels: ["enhancement"]
+body:
+  - type: dropdown
+    id: skill
+    attributes:
+      label: Which skill?
+      options:
+        - youtube-manager
+        - topic-scout
+        - review-grill
+        - video-kit
+        - youtube-shorts
+        - youtube-thumbnail
+        - creator-voice
+        - social-repurpose
+        - youtube-analytics
+        - New skill idea
+    validations:
+      required: true
+  - type: dropdown
+    id: kind
+    attributes:
+      label: What's wrong or missing?
+      options:
+        - Missing guidance (skill skips a step I need)
+        - Inaccurate or misleading instruction
+        - Works, but is awkward to use
+        - Boundary/handoff issue between skills
+        - New skill idea
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: Describe the problem or gap
+      description: What does the skill do now, and why is that wrong for real use?
+    validations:
+      required: true
+  - type: textarea
+    id: suggestion
+    attributes:
+      label: Suggested improvement
+      description: Optional. Proposed wording, extra step, or reference file.
+  - type: textarea
+    id: context
+    attributes:
+      label: Context from your use
+      description: Optional. Which agent, what kind of task, what happened. Redact private channel data.
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Before submitting
+      options:
+        - label: I searched existing issues and this isn't a duplicate
+          required: true
+        - label: I read the skill's SKILL.md and this isn't already covered there
+          required: true

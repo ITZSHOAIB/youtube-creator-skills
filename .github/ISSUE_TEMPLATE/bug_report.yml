@@ -1,0 +1,62 @@
+name: Bug report
+description: Something in a skill or the documentation site behaves incorrectly.
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: dropdown
+    id: area
+    attributes:
+      label: Where is the problem?
+      options:
+        - A skill (instructions or behavior)
+        - Documentation site (site/)
+        - Install / Skills CLI
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: A clear description of the problem.
+    validations:
+      required: true
+  - type: textarea
+    id: repro
+    attributes:
+      label: Steps to reproduce
+      description: Numbered steps, including which agent you used (Codex, Claude Code, etc.).
+      placeholder: |
+        1. Installed with `npx skills add ITZSHOAIB/youtube-creator-skills`
+        2. Asked the agent to ...
+        3. ...
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What did you expect instead?
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: Environment
+      description: Agent + version, operating system.
+      placeholder: "Codex CLI, Windows 11 / macOS 15 / Ubuntu 24.04"
+    validations:
+      required: true
+  - type: textarea
+    id: extra
+    attributes:
+      label: Screenshots or logs
+      description: Optional, but helpful. Redact private channel data.
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Before submitting
+      options:
+        - label: I searched existing issues and this isn't a duplicate
+          required: true
+        - label: This is not a security vulnerability (those go to SECURITY.md)
+          required: true

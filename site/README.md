@@ -1,32 +1,43 @@
-# React + TypeScript + Vite
+# Documentation site
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+The [YouTube Creator Skills](../README.md) documentation site — a Vite +
+React + TypeScript single-page app styled with Tailwind CSS v4. It produces
+static files only: no server code, credentials, or deployment artifacts in
+the repo (`dist/` and `node_modules/` are gitignored).
 
-Currently, two official plugins are available:
+## Develop
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Requires Node 20 (see `.nvmrc`).
 
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the Oxlint configuration
-
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
-
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
+```bash
+npm install
+npm run dev          # dev server at http://localhost:5173
+npm run build        # typecheck (tsc -b) + production build to dist/
+npm run lint         # oxlint
+npm run skills:sync  # refresh public/skill-source/ from skills/*/SKILL.md
+npm run skills:check # verify those copies are current (runs in CI)
 ```
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+Keep **Vite on v5** — the build is pinned for compatibility with this
+toolchain. Do not upgrade it.
+
+## Layout
+
+- `src/components/` — `Layout` (sidebar + mobile header + scroll reset),
+  `MarkdownViewer` (rendered markdown with heading demotion), `CommandBlock`
+  (copyable install commands)
+- `src/data/skills.ts` — the skill registry; **new skills must be registered
+  here** before they appear anywhere on the site
+- `src/pages/` — Home, Skills, SkillDetail (RENDERED/RAW toggle), Install, About
+- `src/index.css` — design tokens: dark neobrutalist theme, 4TECHLoverz brand
+  accents, focus/hover contrast rules
+- `public/skill-source/` — byte-identical copies of `skills/*/SKILL.md` used
+  by the RAW view; regenerate with `npm run skills:sync`, never by hand
+
+## Deploy
+
+Cloudflare Pages (git integration): root directory `site`, framework preset
+Vite (build command `npm run build`), output directory `dist`, optional
+`NODE_VERSION=20`. The full walkthrough, including the manual wrangler
+deploy and the SPA redirect setup, lives in the
+[root README](../README.md#website-deployment).
