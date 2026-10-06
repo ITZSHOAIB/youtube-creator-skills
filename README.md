@@ -99,16 +99,23 @@ For a hands-on review, Review Grill researches the product and saves an experien
 
 ## Website deployment
 
-The documentation site is a plain static web app in [`website/`](website/). It has no build step, server code, deployment manifest, credentials, or generated deployment artifacts.
+The documentation site lives in [`site/`](site/). It is a Vite + React + TypeScript app styled with Tailwind CSS, and it has no server code, deployment manifest, credentials, or generated deployment artifacts checked in (`site/dist` and `site/node_modules` are ignored).
 
 For Cloudflare Pages:
 
 1. Connect this GitHub repository.
 2. Set the production branch to `main`.
-3. Set the build command to **none**.
-4. Set the build output directory to `website`.
+3. Set the root directory to `site`.
+4. Set the framework preset to **Vite** (build command `npm run build`).
+5. Set the build output directory to `dist`.
 
-Cloudflare Pages can then serve the HTML, CSS, JavaScript, and Markdown source files directly.
+For local development:
+
+```bash
+cd site
+npm install
+npm run dev
+```
 
 ## Repository layout
 
@@ -142,13 +149,27 @@ skills/
         ├── shorts-production.md
         ├── shorts-text-overlays.md
         └── shorts-writing-and-publishing.md
-website/
+site/
 ├── index.html
-├── skill.html
-├── styles.css
-├── dark.css
-├── docs.js
-└── skill-source/
+├── package.json
+├── vite.config.ts
+├── public/
+│   └── skill-source/
+│       └── *.md
+└── src/
+    ├── App.tsx
+    ├── index.css
+    ├── components/
+    │   ├── Layout.tsx
+    │   └── MarkdownViewer.tsx
+    ├── data/
+    │   └── skills.ts
+    └── pages/
+        ├── Home.tsx
+        ├── Skills.tsx
+        ├── SkillDetail.tsx
+        ├── Install.tsx
+        └── About.tsx
 ```
 
 Each skill has its own `SKILL.md` and can be installed independently. The channel manager includes supporting references and a local ASR helper for transcript fallback.

@@ -1,0 +1,70 @@
+@import "tailwindcss";
+
+/* Neobrutalist tokens */
+@theme {
+  --font-sans: 'Inter', sans-serif;
+  --font-serif: 'Sora', sans-serif;
+  --font-mono: 'IBM Plex Mono', monospace;
+  --font-display: 'Sora', sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: #070914;
+  color: #FBFBFF;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='0.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+  z-index: 100;
+}
+
+a { color: #FBFBFF; text-decoration: none; }
+a:hover { color: #070914; background: #53D8FF; }
+a:focus-visible, button:focus-visible { outline: 2px solid #53D8FF; outline-offset: 4px; }
+p a, li a, ol a, ul a { text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 1.5px; }
+a, button { transition: color 0.15s ease, background-color 0.15s ease, border-color 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease; }
+code, pre { font-family: var(--font-mono); }
+code { background: #15152B; color: #53D8FF; padding: 2px 6px; border: 2px solid #C3C7D6; border-radius: 0; }
+pre { background: #15152B; color: #FBFBFF; border: 3px solid #C3C7D6; border-radius: 0; box-shadow: 8px 8px 0 #53D8FF; overflow-x: auto; }
+
+.top-strip {
+  height: 4px;
+  background: linear-gradient(90deg, #FF8A24, #FF3C9B, #53D8FF);
+}
+
+.card {
+  @apply bg-[#15152B] border-[3px] border-[#C3C7D6] p-6 shadow-[8px_8px_0_#53D8FF];
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+.chip {
+  @apply inline-block font-mono text-xs uppercase tracking-[0.15em] bg-[#FF8A24] border-2 border-[#070914] px-2 py-1 text-[#070914] shadow-[4px_4px_0_#53D8FF];
+}
+.tile-hover:hover {
+  background: #FF8A24;
+}
+.tile-hover:hover * {
+  color: #070914 !important;
+  border-color: #070914 !important;
+}
+.chip:hover {
+  background: #FF3C9B;
+  color: #070914;
+  border-color: #C3C7D6;
+}
