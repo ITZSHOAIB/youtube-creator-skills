@@ -1,0 +1,4 @@
+interface:
+  display_name: "Topic Scout"
+  short_description: "Research and rank channel-fit video opportunities"
+  default_prompt: "Use $topic-scout to research my channel and rank five current YouTube video opportunities with evidence and confidence labels."

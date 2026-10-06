@@ -1,0 +1,4 @@
+interface:
+  display_name: "YouTube Manager"
+  short_description: "Maintain channel memory, strategy, and performance insights"
+  default_prompt: "Use $youtube-manager to research my channel, draft its profile for approval, and save its setup memory after I approve."
