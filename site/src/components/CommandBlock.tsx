@@ -46,24 +46,24 @@ export function CommandBlock({ command, label = 'COMMAND', prompt = true }: Comm
   }
 
   return (
-    <div className="mb-4 w-full max-w-full border-2 border-[#C3C7D6] bg-[#15152B] shadow-[6px_6px_0_#53D8FF]">
-      <div className="flex items-center justify-between gap-3 border-b-2 border-[#C3C7D6] bg-[#070914] px-4 py-2">
-        <span className="font-mono text-xs uppercase tracking-[0.15em] text-[#FBFBFF]/60 truncate">{label}</span>
+    <div className="mb-4 w-full max-w-full border-2 border-line bg-panel shadow-hard-lg">
+      <div className="flex items-center justify-between gap-3 border-b-2 border-line bg-ink px-4 py-2">
+        <span className="font-mono text-xs uppercase tracking-[0.15em] text-fg/60 truncate">{label}</span>
         <button
           type="button"
           onClick={copy}
           aria-label={copied ? 'Command copied' : 'Copy command to clipboard'}
-          className={`shrink-0 border-2 border-[#C3C7D6] px-2.5 py-1 font-mono text-xs uppercase tracking-[0.15em] transition-colors ${
+          className={`shrink-0 border-2 border-line px-2.5 py-1 font-mono text-xs uppercase tracking-[0.15em] transition-colors ${
             copied
-              ? 'bg-[#53D8FF] text-[#070914]'
-              : 'bg-[#15152B] text-[#FBFBFF] hover:bg-[#53D8FF] hover:text-[#070914]'
+              ? 'bg-primary text-ink'
+              : 'bg-panel text-fg hover:bg-primary hover:text-ink'
           }`}
         >
           {copied ? 'COPIED ✓' : 'COPY'}
         </button>
       </div>
-      <pre className="m-0 border-0 bg-transparent p-4 font-mono text-xs text-[#FBFBFF] shadow-none overflow-x-auto whitespace-pre">
-        {prompt && <span aria-hidden="true" className="select-none text-[#FF8A24]">$ </span>}
+      <pre className="m-0 border-0 bg-transparent p-4 font-mono text-xs text-fg shadow-none overflow-x-auto whitespace-pre">
+        {prompt && <span aria-hidden="true" className="select-none text-primary">$ </span>}
         {command.trim()}
       </pre>
       <span role="status" aria-live="polite" className="sr-only">

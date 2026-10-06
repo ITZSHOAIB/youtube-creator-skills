@@ -29,8 +29,9 @@ toolchain. Do not upgrade it.
 - `src/data/skills.ts` — the skill registry; **new skills must be registered
   here** before they appear anywhere on the site
 - `src/pages/` — Home, Skills, SkillDetail (RENDERED/RAW toggle), Install, About
-- `src/index.css` — design tokens: dark neobrutalist theme, 4TECHLoverz brand
-  accents, focus/hover contrast rules
+- `src/index.css` — theme tokens: palette with semantic roles
+  (`primary` = orange interactive, `accent` = cyan decoration), the hard
+  shadow scale, and the universal link/hover/focus rules
 - `public/skill-source/` — byte-identical copies of `skills/*/SKILL.md` used
   by the RAW view; regenerate with `npm run skills:sync`, never by hand
 

@@ -47,9 +47,20 @@ npm run lint       # oxlint
 CI runs the skill-source check, `npm run build`, and lint on every pull
 request to `main`.
 
-The visual theme lives in `site/src/index.css` (dark neobrutalist, 4TECHLoverz
-brand accents). If you change colors or sizes, keep text/background contrast
-at WCAG AA (4.5:1) or better — check both normal and hover/active states.
+The visual theme lives in `site/src/index.css`, where every color has a
+semantic token:
+
+- **primary** = orange `#FF8A24` — links, hover fills, active/selected
+  states, and content accents (inline code, sub-headings, prompt)
+- **accent** = cyan `#53D8FF` — decoration only: hard shadows, focus
+  ring, gradient; never used as a hover or active fill
+
+Use the generated utilities (`bg-primary`, `text-fg/70`, `border-line`,
+`shadow-hard-md`, …) instead of hardcoded hex, and follow the universal
+state machine: rest = muted, hover = primary fill + ink text, active =
+primary fill + accent shadow. If you change colors or sizes, keep
+text/background contrast at WCAG AA (4.5:1) or better — check both normal
+and hover/active states.
 
 ## Changing skills
 

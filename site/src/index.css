@@ -1,11 +1,30 @@
 @import "tailwindcss";
 
-/* Neobrutalist tokens */
+/* Neobrutalist tokens — 4TECHLoverz palette with semantic roles.
+   ORANGE = primary: every interactive affordance (link text, hover fill,
+            active/selected fill, content accents).
+   CYAN   = accent: decoration only — hard shadows, focus ring, gradient.
+            Never used as a hover or active fill. */
 @theme {
   --font-sans: 'Inter', sans-serif;
   --font-serif: 'Sora', sans-serif;
   --font-mono: 'IBM Plex Mono', monospace;
   --font-display: 'Sora', sans-serif;
+
+  --color-ink: #070914;      /* page background; text on bright fills */
+  --color-panel: #15152B;    /* raised surfaces: sidebar, cards, code */
+  --color-line: #C3C7D6;     /* borders & dividers */
+  --color-muted: #C3C7D6;    /* secondary text (same value, different role) */
+  --color-fg: #FBFBFF;       /* primary text */
+
+  --color-primary: #FF8A24;  /* links, hover fills, active fills */
+  --color-accent: #53D8FF;   /* hard shadows, focus ring, gradient */
+
+  /* Hard offset shadows — always accent */
+  --shadow-hard-sm: 3px 3px 0 var(--color-accent);
+  --shadow-hard-md: 4px 4px 0 var(--color-accent);
+  --shadow-hard-lg: 6px 6px 0 var(--color-accent);
+  --shadow-hard-xl: 8px 8px 0 var(--color-accent);
 }
 
 html {
@@ -14,8 +33,8 @@ html {
 
 body {
   margin: 0;
-  background: #070914;
-  color: #FBFBFF;
+  background: var(--color-ink);
+  color: var(--color-fg);
   font-family: var(--font-sans);
   font-size: 14px;
   line-height: 1.5;
@@ -37,9 +56,12 @@ body::before {
   z-index: 100;
 }
 
-a { color: #FBFBFF; text-decoration: none; }
-a:hover { color: #070914; background: #53D8FF; }
-a:focus-visible, button:focus-visible { outline: 2px solid #53D8FF; outline-offset: 4px; }
+/* Universal link state machine:
+   rest   = primary text (muted variants override via utility classes)
+   hover  = primary fill + ink text, on every element, every page */
+a { color: var(--color-primary); text-decoration: none; }
+a:hover { color: var(--color-ink); background: var(--color-primary); }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 4px; }
 p a, li a, ol a, ul a { text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 1.5px; }
 a, button { transition: color 0.15s ease, background-color 0.15s ease, border-color 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease; }
 code, pre { font-family: var(--font-mono); }
@@ -51,36 +73,38 @@ pre, code { text-transform: none; }
   border: 0;
   padding: 0;
   font-size: inherit;
-  color: #FBFBFF;
+  color: var(--color-fg);
 }
-code { background: #15152B; color: #53D8FF; padding: 2px 6px; border: 2px solid #C3C7D6; border-radius: 0; }
-pre { background: #15152B; color: #FBFBFF; border: 3px solid #C3C7D6; border-radius: 0; box-shadow: 8px 8px 0 #53D8FF; overflow-x: auto; }
+code { background: var(--color-panel); color: var(--color-primary); padding: 2px 6px; border: 2px solid var(--color-line); border-radius: 0; }
+pre { background: var(--color-panel); color: var(--color-fg); border: 3px solid var(--color-line); border-radius: 0; box-shadow: var(--shadow-hard-xl); overflow-x: auto; }
 
+/* Brand gradient — decorative only, never behind text */
 .top-strip {
   height: 4px;
   background: linear-gradient(90deg, #FF8A24, #FF3C9B, #53D8FF);
 }
 
 .card {
-  @apply bg-[#15152B] border-[3px] border-[#C3C7D6] p-6 shadow-[8px_8px_0_#53D8FF];
+  @apply bg-panel border-[3px] border-line p-6 shadow-hard-xl;
 }
 
 .font-display {
   font-family: var(--font-display);
 }
 
+/* Selected badge — same treatment as active nav: primary fill + accent shadow */
 .chip {
-  @apply inline-block font-mono text-xs uppercase tracking-[0.15em] bg-[#FF8A24] border-2 border-[#070914] px-2 py-1 text-[#070914] shadow-[4px_4px_0_#53D8FF];
+  @apply inline-block font-mono text-xs uppercase tracking-[0.15em] bg-primary border-2 border-ink px-2 py-1 text-ink shadow-hard-md;
 }
+/* Quiet chip link — rest is muted; hover takes the universal primary fill */
+.chip-quiet {
+  @apply inline-block font-mono text-xs uppercase tracking-[0.15em] bg-ink text-muted border-2 border-line px-2 py-1;
+}
+
 .tile-hover:hover {
-  background: #FF8A24;
+  background: var(--color-primary);
 }
 .tile-hover:hover * {
-  color: #070914 !important;
-  border-color: #070914 !important;
-}
-.chip:hover {
-  background: #FF3C9B;
-  color: #070914;
-  border-color: #C3C7D6;
+  color: var(--color-ink) !important;
+  border-color: var(--color-ink) !important;
 }
