@@ -1,2 +1,2 @@
-creator-skills-site.tgz
-site-package/
+*.tgz
+site-package*/
