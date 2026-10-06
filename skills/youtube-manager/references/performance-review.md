@@ -36,6 +36,8 @@ Unless the creator asks for a different output, provide:
 4. **Next actions:** up to three ideas to repeat, adjust, or test. Tie each action to evidence and a future signal to inspect; do not promise a view lift.
 5. **Topic Scout handoff:** summarize only reusable topic/audience learnings. Topic Scout can use this dated report when ranking future opportunities; it must respect its scope and confidence rather than treat one video as a channel-wide rule.
 
+When enough comparable uploads exist, also identify reusable packaging and format patterns: title framing, thumbnail composition, opening promise, video length, topic family, traffic route, and format. Treat them as hypotheses to test, never universal formulas or guarantees.
+
 ## Saving and channel memory
 
 Return the analysis in chat unless the creator asks to save it. If asked and no existing analytics convention applies, save a concise dated report as `analytics/YYYY-MM-DD-performance-review.md` in the channel workspace. Keep source report names, date range, and metric definitions; do not duplicate complete exports, unnecessary account details, or sensitive raw data into the report.

@@ -16,6 +16,8 @@ Find promising YouTube video topics for a specific channel, then show why each i
 5. **Deliver a usable shortlist.** Unless the user asks for another scope, return up to five prioritized idea briefs with evidence, a distinct angle, and an honest confidence level. Give one clear recommendation and identify assumptions or facts that would change the ranking. Read the reference for the required evidence and idea-card format.
 6. **Hand off cleanly.** For a selected idea that needs topic facts, an outline/script, or upload assets, continue with Video Kit (`video-kit`) when available. Keep the research brief as supporting evidence; Video Kit owns the per-video deliverables.
 
+For a fast timely scan, limit research to verifiably dated developments from the last seven days, label missing source coverage, and return only ideas that still have a realistic production window.
+
 ## Boundaries
 
 - Channel-wide positioning, broad strategy, and quick ideation belong to YouTube Manager (`youtube-manager`). Use Topic Scout when deeper, current opportunity research or a ranked shortlist is wanted.

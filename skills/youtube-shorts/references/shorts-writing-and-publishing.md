@@ -12,6 +12,12 @@ Use the runtime the concept needs. Do not cut off a complete thought to hit a ta
 
 Write in the creator's natural language. Make technical terms easy to say. Match every spoken claim with appropriate footage or a clear on-screen qualifier.
 
+## Hook options and quality check
+
+Before locking a script, offer distinct hook directions when the creator has not already chosen one: concrete outcome, price/value tension, contrarian take, problem/solution, buyer warning, comparison, or visual surprise. Use personal language only for creator-confirmed experience.
+
+Before presenting a script as ready, check source accuracy, creator voice, first-three-second clarity, spoken duration, proof coverage, CTA honesty, and consistency with the title/cover direction. Fix real issues; label any remaining uncertainty instead of giving an arbitrary score.
+
 ## Claims
 
 - Label manufacturer facts as listed specifications when context could mislead: for example, “up to 1000 Hz in wired mode.”

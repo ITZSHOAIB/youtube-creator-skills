@@ -7,7 +7,7 @@ Save as `shorts-brief.md` in the relevant video project.
 
 ## Status
 - Requested delivery: [concept/script | production brief/prototype | rendered Short]
-- Current state:
+- Current state: [brief | script-approved | scene-plan-approved | mockup-approved | review-export | verified]
 - Project folder:
 - Source project or footage:
 

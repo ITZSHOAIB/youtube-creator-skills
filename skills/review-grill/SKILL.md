@@ -41,6 +41,6 @@ Do not write video narration, an outline, titles, descriptions, tags, thumbnail 
 
 ## Living channel memory
 
-Update `CHANNEL_MEMORY.md` when the creator confirms a durable preference or rule that should guide future videos. Date and mark the change creator-confirmed, update the active guidance in place, and mention the update. Do not promote a one-item experience, verdict, angle, or title to channel-wide memory. Keep uncertain recurring preferences provisional and ask one short confirmation question only when it matters.
+Update `CHANNEL_MEMORY.md` when the creator confirms a durable preference or rule that should guide future videos. Date and mark the change creator-confirmed, update the active guidance in place, and mention the update. Do not promote a one-item experience, verdict, angle, or title to channel-wide memory. Keep uncertain recurring preferences provisional and ask one short confirmation question only when it matters. If the creator explicitly wants a durable spoken-language or personality rule preserved, update `CREATOR_VOICE.md` through the `creator-voice` workflow rather than inferring it from one review.
 
 After saving, link directly to `review-brief.md`. State important limitations, including untested dimensions or uncertain evidence.
