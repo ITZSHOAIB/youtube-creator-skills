@@ -1,13 +1,64 @@
+import { Fragment, useRef } from 'react'
 import { Link } from 'react-router'
 import { skills } from '../data/skills'
 import { CommandBlock } from '../components/CommandBlock'
+import { gsap, useGSAP, useRiseReveal } from '../lib/gsap'
 import packageJson from '../../package.json'
 
 const QUICK_INSTALL_COMMAND = 'npx skills add ITZSHOAIB/youtube-creator-skills'
+const HERO_LABEL = '/// TACTICAL SCHEMA'
+const HERO_WORDS = ['CREATOR', 'SKILLS', 'FOR', 'YOUTUBE']
 
 export function Home() {
+  const root = useRef<HTMLDivElement>(null)
+
+  // Unit grid entrances: tiles are CSS-hidden until this batch reveals them.
+  useRiseReveal(root)
+
+  // Hero: the label types in while the headline words rise out of their masks.
+  useGSAP(
+    () => {
+      const mm = gsap.matchMedia()
+      mm.add('(prefers-reduced-motion: no-preference)', () => {
+        const label = root.current?.querySelector<HTMLElement>('.motion-type')
+        const timeline = gsap.timeline()
+
+        if (label) {
+          // Typed live: clear the rendered text, then slice it back in.
+          label.textContent = ''
+          label.style.visibility = 'visible'
+          const typer = { n: 0 }
+          timeline.to(
+            typer,
+            {
+              n: HERO_LABEL.length,
+              snap: { n: 1 },
+              duration: 0.65,
+              ease: 'none',
+              onUpdate: () => {
+                label.textContent = HERO_LABEL.slice(0, typer.n)
+              },
+              onComplete: () => {
+                label.textContent = HERO_LABEL
+              },
+            },
+            0,
+          )
+        }
+
+        timeline.fromTo(
+          '.motion-mask > span',
+          { yPercent: 110 },
+          { yPercent: 0, duration: 0.6, ease: 'power4.out', stagger: 0.07 },
+          0.25,
+        )
+      })
+    },
+    { scope: root },
+  )
+
   return (
-    <div className="bg-ink text-fg font-mono">
+    <div ref={root} className="bg-ink text-fg font-mono">
       <header className="border-b border-line px-6 py-3 font-mono text-xs uppercase tracking-[0.12em] flex items-center justify-between">
         <span className="text-fg">//</span>
         <span>SYSTEM / YOUTUBE-CREATOR-SKILLS</span>
@@ -16,9 +67,16 @@ export function Home() {
       <div className="top-strip" />
 
       <section className="border-b border-line px-6 py-12 md:py-16">
-        <p className="font-mono text-xs uppercase tracking-[0.2em] text-fg mb-6">/// TACTICAL SCHEMA</p>
+        <p className="font-mono text-xs uppercase tracking-[0.2em] text-fg mb-6 motion-type">{HERO_LABEL}</p>
         <h1 className="font-display text-5xl md:text-7xl lg:text-[6rem] uppercase tracking-[-0.03em] leading-[0.9] mb-8 max-w-5xl">
-          CREATOR SKILLS FOR YOUTUBE
+          {HERO_WORDS.map((word, i) => (
+            <Fragment key={word}>
+              {i > 0 ? ' ' : null}
+              <span className="motion-mask">
+                <span>{word}</span>
+              </span>
+            </Fragment>
+          ))}
         </h1>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <p className="font-mono text-sm normal-case tracking-normal text-fg/70 leading-relaxed">
@@ -60,7 +118,7 @@ export function Home() {
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-ink">
           {skills.map(s => (
-            <Link key={s.id} to={`/skill/${s.id}`} className="group tile-hover bg-ink p-6 block hover:z-10 hover:-translate-x-1 hover:-translate-y-1 hover:shadow-hard-md">
+            <Link key={s.id} to={`/skill/${s.id}`} className="group tile-hover motion-rise bg-ink p-6 block hover:z-10 hover:-translate-x-1 hover:-translate-y-1 hover:shadow-hard-md">
               <div className="flex items-center justify-between mb-6">
                 <span className="font-mono text-xs uppercase tracking-[0.15em] text-fg">{s.group}</span>
                 <span className="font-mono text-xs text-fg/60">ID_{s.id.slice(0, 4).toUpperCase()}</span>

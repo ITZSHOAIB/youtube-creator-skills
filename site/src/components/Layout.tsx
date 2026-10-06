@@ -1,6 +1,7 @@
 import { Link, NavLink, useLocation } from 'react-router'
 import { useEffect, useRef, type ReactNode } from 'react'
 import { skills, groups } from '../data/skills'
+import { ScrollProgress } from './ScrollProgress'
 import packageJson from '../../package.json'
 
 const navItem = (isActive: boolean) =>
@@ -44,6 +45,7 @@ export function Layout({ children }: { children: ReactNode }) {
 
   return (
     <div className="min-h-screen bg-ink text-fg font-mono text-sm uppercase tracking-[0.05em]">
+      <ScrollProgress />
       {/* Mobile: compact sticky header with horizontally scrollable nav */}
       <header className="lg:hidden sticky top-0 z-40 bg-panel border-b border-line">
         <div className="flex items-center justify-between gap-3 px-4 pt-3">

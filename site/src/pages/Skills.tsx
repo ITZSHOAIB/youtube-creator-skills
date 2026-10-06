@@ -1,9 +1,15 @@
+import { useRef } from 'react'
 import { Link } from 'react-router'
 import { skills, groups } from '../data/skills'
+import { useRiseReveal } from '../lib/gsap'
 
 export function Skills() {
+  const root = useRef<HTMLDivElement>(null)
+
+  useRiseReveal(root)
+
   return (
-    <div className="bg-ink text-fg font-mono">
+    <div ref={root} className="bg-ink text-fg font-mono">
       <header className="border-b border-line px-6 py-3 font-mono text-xs uppercase tracking-[0.12em] flex items-center justify-between">
         <span className="text-fg">//</span>
         <span>SKILLS DIRECTORY</span>
@@ -25,7 +31,7 @@ export function Skills() {
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-ink">
             {skills.filter(s => s.group === group.title).map(s => (
-              <Link key={s.id} to={`/skill/${s.id}`} className="group tile-hover bg-ink p-6 block hover:z-10 hover:-translate-x-1 hover:-translate-y-1 hover:shadow-hard-md">
+              <Link key={s.id} to={`/skill/${s.id}`} className="group tile-hover motion-rise bg-ink p-6 block hover:z-10 hover:-translate-x-1 hover:-translate-y-1 hover:shadow-hard-md">
                 <div className="flex items-center justify-between mb-6">
                   <span className="font-mono text-xs uppercase tracking-[0.15em] text-fg">{s.group}</span>
                   <span className="font-mono text-xs text-fg/60">ID_{s.id.slice(0, 4).toUpperCase()}</span>

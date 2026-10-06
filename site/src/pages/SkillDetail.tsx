@@ -1,13 +1,19 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Link, useParams } from 'react-router'
 import { skills } from '../data/skills'
 import { MarkdownViewer } from '../components/MarkdownViewer'
+import { ScrollTrigger, useRiseReveal } from '../lib/gsap'
 
 export function SkillDetail() {
   const { id } = useParams<{ id: string }>()
   const skill = skills.find(s => s.id === id)
   const [source, setSource] = useState<string>('')
   const [tab, setTab] = useState<'rendered' | 'raw'>('rendered')
+  const root = useRef<HTMLDivElement>(null)
+
+  // Skill-to-skill navigation reuses this component, so re-run the reveal
+  // when the id changes: revertOnUpdate restores the CSS start state first.
+  useRiseReveal(root, [id])
 
   useEffect(() => {
     if (!skill) return
@@ -17,9 +23,15 @@ export function SkillDetail() {
       .catch(() => setSource('Source file unavailable.'))
   }, [skill?.id])
 
+  // Async source and tab switches change page height; re-measure the
+  // progress bar range and any not-yet-entered section triggers.
+  useEffect(() => {
+    ScrollTrigger.refresh()
+  }, [source, tab])
+
   if (!skill) {
     return (
-      <div className="bg-ink text-fg font-mono p-6">
+      <div ref={root} className="bg-ink text-fg font-mono p-6">
         <h1 className="font-display text-3xl uppercase mb-4">SKILL NOT FOUND</h1>
         <p className="text-fg/60 mb-4">Return to the <Link to="/skills" className="text-fg">skills directory</Link>.</p>
       </div>
@@ -27,7 +39,7 @@ export function SkillDetail() {
   }
 
   return (
-    <div className="bg-ink text-fg font-mono">
+    <div ref={root} className="bg-ink text-fg font-mono">
       <header className="border-b border-line px-6 py-3 font-mono text-xs uppercase tracking-[0.12em] flex items-center justify-between">
         <span className="text-fg">//</span>
         <span>{skill.group}</span>
@@ -35,14 +47,14 @@ export function SkillDetail() {
       </header>
       <div className="top-strip" />
 
-      <section className="border-b border-line px-6 py-10">
+      <section className="motion-rise border-b border-line px-6 py-10">
         <p className="font-mono text-xs uppercase tracking-[0.2em] text-fg mb-4">[{skill.group}]</p>
         <h1 className="font-display text-5xl md:text-6xl uppercase tracking-[-0.03em] leading-[0.9] mb-4">{skill.name}</h1>
         <p className="font-mono text-sm normal-case text-fg/70 max-w-3xl mb-6">{skill.desc}</p>
         <span className="chip">/{skill.id}</span>
       </section>
 
-      <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-ink border-b border-line">
+      <section className="motion-rise grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-ink border-b border-line">
         <div className="bg-ink p-6">
           <h2 className="font-display text-xl uppercase leading-[0.9] mb-3">WHEN TO USE</h2>
           <p className="font-mono text-sm normal-case text-fg/70 leading-relaxed">{skill.when}</p>
@@ -57,14 +69,14 @@ export function SkillDetail() {
         </div>
       </section>
 
-      <section className="border-b border-line px-6 py-10">
+      <section className="motion-rise border-b border-line px-6 py-10">
         <h2 className="font-display text-2xl uppercase tracking-[-0.02em] leading-[0.9] mb-6">WORKFLOW</h2>
         <ol className="list-decimal list-inside font-mono text-sm normal-case text-fg/70 space-y-2">
           {skill.steps.map((step, i) => <li key={i}>{step}</li>)}
         </ol>
       </section>
 
-      <section className="grid grid-cols-1 md:grid-cols-2 gap-px bg-ink border-b border-line">
+      <section className="motion-rise grid grid-cols-1 md:grid-cols-2 gap-px bg-ink border-b border-line">
         <div className="bg-ink p-6">
           <h2 className="font-display text-xl uppercase leading-[0.9] mb-3">OUTPUTS</h2>
           <p className="font-mono text-sm normal-case text-fg/70 leading-relaxed">{skill.outputs}</p>
@@ -75,7 +87,7 @@ export function SkillDetail() {
         </div>
       </section>
 
-      <section className="border-b border-line px-6 py-10">
+      <section className="motion-rise border-b border-line px-6 py-10">
         <h2 className="font-display text-2xl uppercase tracking-[-0.02em] leading-[0.9] mb-6">RELATED</h2>
         <div className="flex flex-wrap gap-3">
           {skill.related.map(id => {
@@ -85,7 +97,7 @@ export function SkillDetail() {
         </div>
       </section>
 
-      <section className="px-6 py-10 overflow-hidden">
+      <section className="motion-rise px-6 py-10 overflow-hidden">
         <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
           <h2 className="font-display text-2xl uppercase tracking-[-0.02em] leading-[0.9]">SOURCE INSTRUCTIONS</h2>
           <div className="flex gap-2">

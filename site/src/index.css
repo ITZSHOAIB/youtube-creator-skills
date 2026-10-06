@@ -111,6 +111,34 @@
   .chip-quiet {
     @apply inline-block font-mono text-xs uppercase tracking-[0.15em] bg-ink text-muted border-2 border-line px-2 py-1;
   }
+
+  /* Word-mask wrappers for the hero headline: inline-block so transforms
+     apply, overflow hidden so each word rises inside its own line box.
+     All-caps display text keeps its cap height inside the half-leading of
+     the 0.9 line box, so the mask never clips ink at rest. */
+  .motion-mask {
+    display: inline-block;
+    overflow: hidden;
+  }
+  .motion-mask > span {
+    display: inline-block;
+  }
+
+  /* Scroll reading progress: decorative cyan hairline across the top of the
+     viewport. GSAP scrubs it forward under no-preference; under reduce the
+     tween never runs, so the scaleX(0) below keeps it invisible. */
+  .scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: var(--color-accent);
+    transform: scaleX(0);
+    transform-origin: left center;
+    pointer-events: none;
+    z-index: 50;
+  }
 }
 
 /* Deliberately unlayered: the tile hover fill must beat the `bg-ink` utility
@@ -124,7 +152,7 @@
   border-color: var(--color-ink) !important;
 }
 
-/* Motion: press physics + terminal life.
+/* Motion: press physics, terminal life, and scroll reveals.
    Deliberately unlayered (same escape hatch as .tile-hover): while a press is
    held, `translate` and `box-shadow` must outrank the translate utilities and
    shadow-hard-* tokens, and unlayered CSS beats layered CSS. Every animation
@@ -161,5 +189,21 @@
   /* Block cursor at the end of every command line. */
   .cmd-blink {
     animation: cmd-blink 1.1s linear infinite;
+  }
+
+  /* Tier B initial states: content starts hidden and GSAP (running in a
+     layout effect, before first paint) reveals it. The reduced-motion branch
+     never hides anything, so static users always see full content even if
+     the motion layer never runs — and toggling the OS setting live heals
+     both ways, because the same media query gates CSS and JS alike. */
+  .motion-mask > span {
+    transform: translateY(110%);
+  }
+  .motion-type {
+    visibility: hidden;
+  }
+  .motion-rise {
+    opacity: 0;
+    transform: translateY(20px);
   }
 }
