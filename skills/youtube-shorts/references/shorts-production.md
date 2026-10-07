@@ -28,7 +28,7 @@ Create one frame snapshot per overlay scene when a visual prototype or review is
 
 ## Render
 
-Use available open-source local tooling, such as HyperFrames for designed motion sequences and FFmpeg for final composition, encoding, stream inspection, and frame extraction. Keep the composition editable where practical and follow any stricter tool constraints in channel memory.
+Use available open-source local tooling, such as HyperFrames for designed motion sequences (route through the **Compose Video** (`compose-video`) skill when available) and FFmpeg for final composition, encoding, stream inspection, and frame extraction. Keep the composition editable where practical and follow any stricter tool constraints in channel memory.
 
 Preserve the requested video properties. When the source is a 4K 60 fps manual edit, do not silently downscale or change frame rate. If a new final export is requested, target the approved dimensions, frame rate, video codec, audio codec, and bitrate.
 

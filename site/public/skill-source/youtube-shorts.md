@@ -24,7 +24,7 @@ Develop the Short the creator asked for, from a focused concept through producti
 - Separate creator experience, sourced facts, and inference. Recheck changing price, availability, compatibility, and specifications from reliable current sources.
 - Keep real creator footage as proof. Label generated or illustrative visuals so they cannot be mistaken for product testing or genuine footage.
 - Respect licensing for footage, music, fonts, and images. Follow channel memory for music recommendations and attribution; do not promise that a track is claim-free.
-- For production, use available open-source local tooling such as HyperFrames and FFmpeg when that matches the creator's constraints. The workflow is not itself a rendering engine. Do not use voice cloning without explicit permission.
+- For production, use available open-source local tooling such as HyperFrames and FFmpeg when that matches the creator's constraints; route HyperFrames work through **Compose Video** (`compose-video`) when available. The workflow is not itself a rendering engine. Do not use voice cloning without explicit permission.
 
 ## References
 

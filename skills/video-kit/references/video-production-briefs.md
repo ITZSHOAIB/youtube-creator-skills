@@ -60,7 +60,7 @@ Favor one well-supported treatment over a long menu of concepts. If the request 
 
 #### Production handoff
 
-Video Kit owns the story, channel fit, language, source selection, claims, and creative boundaries. For a HyperFrames build, put the creative contract in `composition-brief.md`: specify the must-show/must-not-change points without prescribing low-level selectors or runtime internals. Read [hyperframes-build.md](hyperframes-build.md) for implementation, local rendering, and review.
+Video Kit owns the story, channel fit, language, source selection, claims, and creative boundaries. For a HyperFrames build, put the creative contract in `composition-brief.md`: specify the must-show/must-not-change points without prescribing low-level selectors or runtime internals. Hand the brief to **Compose Video** (`compose-video`) when available for implementation, local rendering, and review.
 
 Create only useful artifacts for the job. Depending on scope, those may be `video-plan.md`, `composition-brief.md`, the editable HyperFrames project, rendered video, a selected poster/thumbnail, and channel-language share copy. Do not create all artifacts for a brief-only or concept-only request.
 

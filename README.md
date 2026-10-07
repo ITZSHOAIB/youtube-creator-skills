@@ -17,6 +17,7 @@ This repository contains focused Agent Skills you can install individually or to
 | [`review-grill`](skills/review-grill/SKILL.md) | Product and digital-service research followed by an adaptive, one-question-at-a-time interview that saves the creator's firsthand experience in a structured review brief. |
 | [`video-kit`](skills/video-kit/SKILL.md) | Per-video research, recording outlines or scripts, publishing assets, and optional open-source HyperFrames production. |
 | [`youtube-shorts`](skills/youtube-shorts/SKILL.md) | Short-specific concepts, scripts, upload assets, production briefs, overlays, and requested local renders. |
+| [`compose-video`](skills/compose-video/SKILL.md) | Open-source HyperFrames production: brief to checked composition to approved render, with honest tooling fallbacks. |
 | [`youtube-thumbnail`](skills/youtube-thumbnail/SKILL.md) | Honest thumbnail strategy, mockups, and final exports. |
 | [`creator-voice`](skills/creator-voice/SKILL.md) | An approved creator voice profile from real scripts and transcripts. |
 | [`social-repurpose`](skills/social-repurpose/SKILL.md) | A selected cross-platform repurposing plan from an approved source video. |
@@ -150,19 +151,22 @@ skills/
 ├── video-kit/
 │   ├── SKILL.md
 │   └── references/
-│       ├── hyperframes-build.md
 │       ├── music-and-licensing.md
 │       ├── project-organization.md
 │       ├── scripting-and-publishing.md
 │       └── video-production-briefs.md
-└── youtube-shorts/
+├── youtube-shorts/
+│   ├── SKILL.md
+│   └── references/
+│       ├── shorts-brief-template.md
+│       ├── shorts-intake.md
+│       ├── shorts-production.md
+│       ├── shorts-text-overlays.md
+│       └── shorts-writing-and-publishing.md
+└── compose-video/
     ├── SKILL.md
     └── references/
-        ├── shorts-brief-template.md
-        ├── shorts-intake.md
-        ├── shorts-production.md
-        ├── shorts-text-overlays.md
-        └── shorts-writing-and-publishing.md
+        └── build-decisions.md
 site/
 ├── index.html
 ├── package.json
