@@ -7,7 +7,7 @@ export function Install() {
     <div className="bg-ink text-fg font-mono">
       <header className="border-b border-line px-6 py-3 font-mono text-xs uppercase tracking-[0.12em] flex items-center justify-between">
         <span className="text-fg">//</span>
-        <span>INSTALLATION GUIDE</span>
+        <span>ONE COMMAND</span>
         <span>SETUP</span>
       </header>
       <div className="top-strip" />
@@ -15,14 +15,14 @@ export function Install() {
       <section className="border-b border-line px-6 py-10">
         <h1 className="font-display text-5xl md:text-6xl uppercase tracking-[-0.03em] leading-[0.9] mb-4">INSTALL THE SKILLS</h1>
         <p className="font-mono text-sm normal-case text-fg/70 max-w-3xl">
-          Pick the skills and agents you use. The installer writes editable files into your project.
+          Pick the skills you want and the agent you use. Everything lands in your project as plain files you can edit.
         </p>
       </section>
 
       <section className="border-b border-line px-6 py-10">
-        <h2 className="font-display text-2xl uppercase tracking-[-0.02em] leading-[0.9] mb-6">RUN THE INSTALLER</h2>
+        <h2 className="font-display text-2xl uppercase tracking-[-0.02em] leading-[0.9] mb-6">RUN ONE COMMAND</h2>
         <p className="font-mono text-sm normal-case text-fg/70 mb-4">
-          One command, no flags needed. The CLI will ask which skills you want, which agent you use, and where to install them — then it writes editable files into your project.
+          One command, no flags. Answer three quick questions — which skills, which agent, where — and it writes the files into your project.
         </p>
         <CommandBlock label="INSTALL" command={INSTALL_COMMAND} />
         <p className="font-mono text-sm normal-case text-fg/70">

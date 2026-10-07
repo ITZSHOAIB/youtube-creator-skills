@@ -33,7 +33,7 @@ export function SkillDetail() {
     return (
       <div ref={root} className="bg-ink text-fg font-mono p-6">
         <h1 className="font-display text-3xl uppercase mb-4">SKILL NOT FOUND</h1>
-        <p className="text-fg/60 mb-4">Return to the <Link to="/skills" className="text-fg">skills directory</Link>.</p>
+        <p className="text-fg/60 mb-4">Back to the <Link to="/skills" className="text-fg">skills list</Link>.</p>
       </div>
     )
   }
@@ -99,7 +99,7 @@ export function SkillDetail() {
 
       <section className="motion-rise px-6 py-10 overflow-hidden">
         <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
-          <h2 className="font-display text-2xl uppercase tracking-[-0.02em] leading-[0.9]">SOURCE INSTRUCTIONS</h2>
+          <h2 className="font-display text-2xl uppercase tracking-[-0.02em] leading-[0.9]">SOURCE FILE</h2>
           <div className="flex gap-2">
             <button
               type="button"
@@ -120,7 +120,7 @@ export function SkillDetail() {
           </div>
         </div>
         <p className="font-mono text-sm normal-case text-fg/70 mb-4">
-          Current SKILL.md included for inspection. Switch to RAW to see the exact source file.
+          This is the exact file your agent installs — rendered for reading, or RAW for the literal source.
         </p>
         <div className="w-full max-w-full border border-line bg-panel shadow-hard-xl">
           {source ? (
@@ -128,7 +128,7 @@ export function SkillDetail() {
               ? <MarkdownViewer source={source} />
               : <pre className="w-full max-w-full max-h-[75vh] m-0 border-0 shadow-none font-mono text-xs p-6 md:p-8 overflow-auto whitespace-pre text-fg">{source}</pre>
           ) : (
-            <p className="p-6 md:p-8 font-mono text-sm normal-case text-fg/60">// Loading source…</p>
+            <p className="p-6 md:p-8 font-mono text-sm normal-case text-fg/60">// Loading the skill file…</p>
           )}
         </div>
       </section>

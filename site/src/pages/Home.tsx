@@ -6,7 +6,7 @@ import { gsap, useGSAP, useRiseReveal } from '../lib/gsap'
 import packageJson from '../../package.json'
 
 const QUICK_INSTALL_COMMAND = 'npx skills add ITZSHOAIB/youtube-creator-skills'
-const HERO_LABEL = '/// TACTICAL SCHEMA'
+const HERO_LABEL = '/// PLAN. SCRIPT. SHIP.'
 const HERO_WORDS = ['CREATOR', 'SKILLS', 'FOR', 'YOUTUBE']
 
 export function Home() {
@@ -64,7 +64,7 @@ export function Home() {
     <div ref={root} className="bg-ink text-fg font-mono">
       <header className="border-b border-line px-6 py-3 font-mono text-xs uppercase tracking-[0.12em] flex items-center justify-between">
         <span className="text-fg">//</span>
-        <span>SYSTEM / YOUTUBE-CREATOR-SKILLS</span>
+        <span>OPEN SOURCE / YOUTUBE-CREATOR-SKILLS</span>
         <span>v{packageJson.version}</span>
       </header>
       <div className="top-strip" />
@@ -83,10 +83,10 @@ export function Home() {
         </h1>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <p className="font-mono text-sm normal-case tracking-normal text-fg/70 leading-relaxed">
-            A brutal, evidence-led operating layer for creators. Plan, script, and ship with repeatable technical discipline.
+            Plan, script, and ship every video — without losing your voice. Nine skills your agent follows, start to finish.
           </p>
           <div className="flex flex-col gap-2 font-mono text-xs uppercase tracking-[0.15em] text-fg/60">
-            <span>[ INSTALL PIPELINE ]</span>
+            <span>[ ONE-COMMAND INSTALL ]</span>
             <span>[ CHANNEL MEMORY ]</span>
             <span>[ SCRIPT + PACKAGING ]</span>
             <span>[ REVIEW + ITERATE ]</span>
@@ -99,9 +99,9 @@ export function Home() {
           <h2 className="font-display text-3xl uppercase tracking-[-0.02em] leading-[0.9] mb-4">INSTALL</h2>
           <CommandBlock label="QUICK INSTALL" command={QUICK_INSTALL_COMMAND} />
           <p className="font-mono text-xs uppercase tracking-[0.1em] text-fg/60 mb-4">
-            Update with <code>npx skills update</code>
+            Keep them updated with <code>npx skills update</code>
           </p>
-          <Link to="/install" className="font-mono text-sm normal-case">/// More options</Link>
+          <Link to="/install" className="font-mono text-sm normal-case">/// More install options</Link>
         </div>
 
         <div className="bg-ink p-6">
@@ -117,18 +117,18 @@ export function Home() {
 
       <section className="border-b border-line">
         <h2 className="px-6 py-4 font-mono text-xs uppercase tracking-[0.2em] text-fg/60 border-b border-line">
-          === UNIT GRID ===
+          === ALL SKILLS ===
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-ink">
-          {skills.map(s => (
+          {skills.map((s, i) => (
             <Link key={s.id} to={`/skill/${s.id}`} className="group tile-hover motion-rise bg-ink p-6 block hover:z-10 hover:-translate-x-1 hover:-translate-y-1 hover:shadow-hard-md">
               <div className="flex items-center justify-between mb-6">
                 <span className="font-mono text-xs uppercase tracking-[0.15em] text-fg">{s.group}</span>
-                <span className="font-mono text-xs text-fg/60">ID_{s.id.slice(0, 4).toUpperCase()}</span>
+                <span className="font-mono text-xs text-fg/60">{`[ ${String(i + 1).padStart(2, '0')} ]`}</span>
               </div>
               <h3 className="font-display text-xl uppercase leading-[0.95] tracking-[-0.01em] mb-3 group-hover:text-fg">{s.name}</h3>
               <p className="font-mono text-sm normal-case text-fg/70 leading-relaxed">{s.desc}</p>
-              <div className="mt-6 font-mono text-xs uppercase tracking-[0.15em] text-fg/60">[ VIEW SYSTEM ]</div>
+              <div className="mt-6 font-mono text-xs uppercase tracking-[0.15em] text-fg/60">[ VIEW SKILL ]</div>
             </Link>
           ))}
         </div>
@@ -136,11 +136,11 @@ export function Home() {
 
       <section className="border-b border-line px-6 py-12 grid grid-cols-1 md:grid-cols-2 gap-px bg-ink">
         <div className="bg-ink p-6 md:p-0 md:pr-6">
-          <h2 className="font-display text-3xl uppercase tracking-[-0.02em] leading-[0.9] mb-6">GET ORIENTED</h2>
+          <h2 className="font-display text-3xl uppercase tracking-[-0.02em] leading-[0.9] mb-6">NEXT STEPS</h2>
           <ul className="font-mono text-sm normal-case text-fg/70 space-y-3">
-            <li><strong className="text-fg">START HERE</strong> — <Link to="/install">Install the skills</Link></li>
-            <li><strong className="text-fg">PRINCIPLES</strong> — <Link to="/about">What is a skill?</Link></li>
-            <li><strong className="text-fg">EXPLORE</strong> — <Link to="/skills">Browse all skills</Link></li>
+            <li><strong className="text-fg">SETUP</strong> — <Link to="/install">Install in one command</Link></li>
+            <li><strong className="text-fg">LEARN</strong> — <Link to="/about">What is a skill?</Link></li>
+            <li><strong className="text-fg">BROWSE</strong> — <Link to="/skills">All nine skills</Link></li>
           </ul>
         </div>
         <div className="bg-ink p-6 md:p-0 md:pl-6">
@@ -152,7 +152,7 @@ export function Home() {
 
       <footer className="px-6 py-4 font-mono text-xs uppercase tracking-[0.15em] text-fg/60 flex items-center justify-between border-t border-line">
         <span>© 2026 YOUTUBE-CREATOR-SKILLS</span>
-        <span>DOCUMENTATION TERMINAL</span>
+        <span>MADE FOR YOUTUBE CREATORS</span>
       </footer>
     </div>
   )
