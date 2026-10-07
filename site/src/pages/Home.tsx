@@ -155,7 +155,7 @@ export function Home() {
 
       <footer className="px-6 py-4 font-mono text-xs uppercase tracking-[0.15em] text-fg/60 flex items-center justify-between border-t border-line">
         <span>© 2026 YOUTUBE-CREATOR-SKILLS</span>
-        <span>MADE FOR YOUTUBE CREATORS</span>
+        <a href="https://www.youtube.com/4techloverz" target="_blank" rel="noopener noreferrer" className="hover:text-ink hover:bg-primary px-2 py-1 border-2 border-transparent">[ YOUTUBE / 4TECHLOVERZ ]</a>
       </footer>
     </div>
   )

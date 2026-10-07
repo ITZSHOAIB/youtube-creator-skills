@@ -45,6 +45,21 @@ export function About() {
         </p>
         <Link to="/skills" className="inline-block font-mono text-sm normal-case">[ Browse the full list ]</Link>
       </section>
+
+      <section className="border-t border-line px-6 py-10">
+        <h2 className="font-display text-2xl uppercase tracking-[-0.02em] leading-[0.9] mb-4">SEE IT ON THE CHANNEL</h2>
+        <p className="font-mono text-sm normal-case text-fg/70 mb-6 max-w-3xl">
+          These skills run on a real YouTube channel, week after week. Watch what ships — then put them to work on yours.
+        </p>
+        <a
+          href="https://www.youtube.com/4techloverz"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-block font-mono text-xs uppercase tracking-[0.15em] border-2 border-line bg-panel px-4 py-3 shadow-hard-md"
+        >
+          [ YouTube / 4techloverz ]
+        </a>
+      </section>
     </div>
   )
 }
