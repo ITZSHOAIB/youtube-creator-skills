@@ -1,10 +1,11 @@
-import { BrowserRouter, Navigate, Routes, Route } from 'react-router'
+import { BrowserRouter, Routes, Route } from 'react-router'
 import { Layout } from './components/Layout'
 import { Home } from './pages/Home'
 import { Skills } from './pages/Skills'
 import { SkillDetail } from './pages/SkillDetail'
 import { Install } from './pages/Install'
 import { About } from './pages/About'
+import { NotFound } from './pages/NotFound'
 
 export default function App() {
   return (
@@ -16,7 +17,7 @@ export default function App() {
           <Route path="/skill/:id" element={<SkillDetail />} />
           <Route path="/install" element={<Install />} />
           <Route path="/about" element={<About />} />
-          <Route path="*" element={<Navigate to="/" replace />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </Layout>
     </BrowserRouter>

@@ -2,9 +2,12 @@ import { useRef } from 'react'
 import { Link } from 'react-router'
 import { skills, groups } from '../data/skills'
 import { useRiseReveal } from '../lib/gsap'
+import { resolvePageMeta, useSeo } from '../lib/useSeo'
 
 export function Skills() {
   const root = useRef<HTMLDivElement>(null)
+
+  useSeo(resolvePageMeta('/skills'))
 
   useRiseReveal(root)
 

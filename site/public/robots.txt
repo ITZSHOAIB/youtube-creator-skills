@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /skill-source/
+
+Sitemap: https://creator-skills.sohab.dev/sitemap.xml

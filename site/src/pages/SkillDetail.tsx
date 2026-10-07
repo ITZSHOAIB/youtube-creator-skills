@@ -3,6 +3,7 @@ import { Link, useParams } from 'react-router'
 import { skills } from '../data/skills'
 import { MarkdownViewer } from '../components/MarkdownViewer'
 import { ScrollTrigger, useRiseReveal } from '../lib/gsap'
+import { resolvePageMeta, useSeo } from '../lib/useSeo'
 
 export function SkillDetail() {
   const { id } = useParams<{ id: string }>()
@@ -10,6 +11,8 @@ export function SkillDetail() {
   const [source, setSource] = useState<string>('')
   const [tab, setTab] = useState<'rendered' | 'raw'>('rendered')
   const root = useRef<HTMLDivElement>(null)
+
+  useSeo(resolvePageMeta(skill ? `/skill/${skill.id}` : window.location.pathname))
 
   // Skill-to-skill navigation reuses this component, so re-run the reveal
   // when the id changes: revertOnUpdate restores the CSS start state first.

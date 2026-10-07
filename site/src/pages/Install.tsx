@@ -1,8 +1,11 @@
 import { CommandBlock } from '../components/CommandBlock'
+import { resolvePageMeta, useSeo } from '../lib/useSeo'
 
 const INSTALL_COMMAND = 'npx skills add ITZSHOAIB/youtube-creator-skills'
 
 export function Install() {
+  useSeo(resolvePageMeta('/install'))
+
   return (
     <div className="bg-ink text-fg font-mono">
       <header className="border-b border-line px-6 py-3 font-mono text-xs uppercase tracking-[0.12em] flex items-center justify-between">

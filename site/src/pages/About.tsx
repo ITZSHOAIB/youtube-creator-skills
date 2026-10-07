@@ -1,6 +1,9 @@
 import { Link } from 'react-router'
+import { resolvePageMeta, useSeo } from '../lib/useSeo'
 
 export function About() {
+  useSeo(resolvePageMeta('/about'))
+
   return (
     <div className="bg-ink text-fg font-mono">
       <header className="border-b border-line px-6 py-3 font-mono text-xs uppercase tracking-[0.12em] flex items-center justify-between">

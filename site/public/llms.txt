@@ -1,0 +1,29 @@
+# Creator Skills
+
+> Installable skills that turn an AI agent into a YouTube workflow: research, scripting, thumbnails, analytics, and channel memory. One command to install.
+
+Install with:
+
+    npx skills add ITZSHOAIB/youtube-creator-skills
+
+## Skills
+
+- [YouTube Manager](https://creator-skills.sohab.dev/skill/youtube-manager): Teaches your agent how your channel works — audience, strategy, and rules — once, then keeps it current.
+- [Creator Voice](https://creator-skills.sohab.dev/skill/creator-voice): Learns how you actually talk and write, then saves it as a voice profile your agent has to follow.
+- [Topic Scout](https://creator-skills.sohab.dev/skill/topic-scout): Finds and ranks video ideas your channel can actually win, backed by what viewers search for right now.
+- [Review Grill](https://creator-skills.sohab.dev/skill/review-grill): Interviews you about a product you've actually used — one question at a time — plus the research around it.
+- [Video Kit](https://creator-skills.sohab.dev/skill/video-kit): Turns a chosen topic into an outline, script, title, and thumbnail brief — whatever step you ask for.
+- [YouTube Thumbnail](https://creator-skills.sohab.dev/skill/youtube-thumbnail): Designs a thumbnail your video can actually keep — brief, approved mockup, and a 1280x720 final export.
+- [YouTube Shorts](https://creator-skills.sohab.dev/skill/youtube-shorts): Turns any video, idea, or clip into Shorts that fit your channel — from brief to final render when you say go.
+- [Social Repurpose](https://creator-skills.sohab.dev/skill/social-repurpose): Finds what else your finished video is worth — the angles worth posting elsewhere, not just resized copies.
+- [YouTube Analytics](https://creator-skills.sohab.dev/skill/youtube-analytics): Turns your Studio data into a few decisions worth making — what to fix, what to repeat, what to watch.
+
+## Pages
+
+- [Install](https://creator-skills.sohab.dev/install): One command, no flags.
+- [All skills](https://creator-skills.sohab.dev/skills): Nine skills for the whole video process.
+- [What is a skill?](https://creator-skills.sohab.dev/about): A repeatable habit, written down for your agent.
+
+## Repository
+
+- [GitHub](https://github.com/ITZSHOAIB/youtube-creator-skills)

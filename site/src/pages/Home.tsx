@@ -3,6 +3,7 @@ import { Link } from 'react-router'
 import { skills } from '../data/skills'
 import { CommandBlock } from '../components/CommandBlock'
 import { gsap, useGSAP, useRiseReveal } from '../lib/gsap'
+import { resolvePageMeta, useSeo } from '../lib/useSeo'
 import packageJson from '../../package.json'
 
 const QUICK_INSTALL_COMMAND = 'npx skills add ITZSHOAIB/youtube-creator-skills'
@@ -11,6 +12,8 @@ const HERO_WORDS = ['CREATOR', 'SKILLS', 'FOR', 'YOUTUBE']
 
 export function Home() {
   const root = useRef<HTMLDivElement>(null)
+
+  useSeo(resolvePageMeta('/'))
 
   // Unit grid entrances: tiles are CSS-hidden until this batch reveals them.
   useRiseReveal(root)
