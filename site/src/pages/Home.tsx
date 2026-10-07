@@ -110,10 +110,10 @@ export function Home() {
         <div className="bg-ink p-6">
           <h2 className="font-display text-3xl uppercase tracking-[-0.02em] leading-[0.9] mb-4">FEATURED</h2>
           <ul className="space-y-1 font-mono text-xs uppercase tracking-[0.08em]">
-            <li><Link to="/skill/youtube-manager" className="hover:text-ink">/youtube-manager</Link></li>
-            <li><Link to="/skill/topic-scout" className="hover:text-ink">/topic-scout</Link></li>
-            <li><Link to="/skill/video-kit" className="hover:text-ink">/video-kit</Link></li>
-            <li><Link to="/skill/creator-voice" className="hover:text-ink">/creator-voice</Link></li>
+            <li><Link to="/skill/youtube-manager" className="inline-block py-1.5 hover:text-ink">/youtube-manager</Link></li>
+            <li><Link to="/skill/topic-scout" className="inline-block py-1.5 hover:text-ink">/topic-scout</Link></li>
+            <li><Link to="/skill/video-kit" className="inline-block py-1.5 hover:text-ink">/video-kit</Link></li>
+            <li><Link to="/skill/creator-voice" className="inline-block py-1.5 hover:text-ink">/creator-voice</Link></li>
           </ul>
         </div>
       </section>
