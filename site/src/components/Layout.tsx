@@ -4,6 +4,16 @@ import { skills, groups } from '../data/skills'
 import { ScrollProgress } from './ScrollProgress'
 import packageJson from '../../package.json'
 
+/** The caret-play brand mark (orange block, ink chevron + cursor, ink hard shadow). */
+const Mark = ({ className }: { className?: string }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" className={className} aria-hidden="true" focusable="false">
+    <rect x="10" y="10" width="48" height="48" fill="var(--color-ink)" />
+    <rect x="4" y="4" width="48" height="48" fill="var(--color-primary)" stroke="var(--color-ink)" strokeWidth="4" />
+    <path d="M11 14 L21 14 L35 28 L21 42 L11 42 L23 28 Z" fill="var(--color-ink)" />
+    <rect x="40" y="20" width="5.5" height="16" fill="var(--color-ink)" />
+  </svg>
+)
+
 const navItem = (isActive: boolean) =>
   isActive
     ? 'bg-primary border-2 border-line px-3 py-2 shadow-hard-md text-ink'
@@ -49,8 +59,9 @@ export function Layout({ children }: { children: ReactNode }) {
       {/* Mobile: compact sticky header with horizontally scrollable nav */}
       <header className="lg:hidden sticky top-0 z-40 bg-panel border-b border-line">
         <div className="flex items-center justify-between gap-3 px-4 pt-3">
-          <Link to="/" className="font-display text-sm uppercase tracking-[-0.02em] text-fg">
-            [==] CREATOR SKILLS
+          <Link to="/" className="flex items-center gap-2 font-display text-sm uppercase tracking-[-0.02em] text-fg">
+            <Mark className="h-5 w-5 shrink-0" />
+            CREATOR SKILLS
           </Link>
           <span className="text-xs text-fg/60">v{packageJson.version}</span>
         </div>
@@ -72,8 +83,9 @@ export function Layout({ children }: { children: ReactNode }) {
         {/* Desktop: sticky sidebar, skills tree always expanded; scrolls on overflow */}
         <aside className="hidden lg:flex lg:flex-col border-r-[4px] border-line p-6 lg:sticky lg:top-0 lg:h-screen justify-between bg-panel">
           <div className="min-h-0 overflow-y-auto">
-            <Link to="/" className="block font-display text-2xl uppercase tracking-[-0.02em] leading-[0.9] mb-4 text-fg">
-              [==] CREATOR<br />SKILLS
+            <Link to="/" className="flex items-start gap-3 font-display text-2xl uppercase tracking-[-0.02em] leading-[0.9] mb-4 text-fg">
+              <Mark className="h-8 w-8 shrink-0 mt-0.5" />
+              <span>CREATOR<br />SKILLS</span>
             </Link>
             <div className="top-strip h-1 mb-8" />
             <nav aria-label="Main" className="flex flex-col gap-2 text-xs">
