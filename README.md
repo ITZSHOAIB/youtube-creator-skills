@@ -12,6 +12,7 @@ This repository contains focused Agent Skills you can install individually or to
 
 | Skill | What it helps with |
 |---|---|
+| [`fact-check`](skills/fact-check/SKILL.md) | Audits factual claims in scripts, posts, carousels, videos, and publishing copy with delegated research, direct sources, corrections, and unresolved actions. |
 | [`youtube-manager`](skills/youtube-manager/SKILL.md) | Channel setup, creator-approved memory, channel research, content strategy, and optional reviews of supplied Studio analytics. |
 | [`topic-scout`](skills/topic-scout/SKILL.md) | Deep, current research and evidence-backed ranking of video topic opportunities for a specific channel. |
 | [`review-grill`](skills/review-grill/SKILL.md) | Product and digital-service research followed by an adaptive, one-question-at-a-time interview that saves the creator's firsthand experience in a structured review brief. |
